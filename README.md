@@ -1,6 +1,6 @@
-# dekevr
+# projectno2
 
-> 得可vr的第一个项目
+> 得可jz的第二个项目
 
 ## Build Setup
 
