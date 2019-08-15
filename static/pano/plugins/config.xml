@@ -1,0 +1,23 @@
+<krpano>
+	
+	
+	<security>
+    	<allowdomain domain="*" />
+  	</security>
+  	<!-- 陀螺仪插件 -->
+  	<plugin name="gyro" devices="html5" keep="true"
+			url="%SWFPATH%/plugins/gyro2.js"
+			enabled="false"
+			camroll="true"
+			friction="0.0"
+			touch_mode="full"
+			sensor_mode="1"
+			softstart="0"
+			autocalibration="true"
+			onavailable=""
+			onunavailable=""
+			onenable=""
+			ondisable=""
+			/>
+	<autorotate enabled="false" speed="10.0" horizon="0.0"/>
+</krpano>

@@ -1,0 +1,44 @@
+<krpano debugmode="true">
+
+
+
+	<plugin name="customAction"
+			keep="true"
+			url="actionPlugin.js"
+			value="true"
+			off="0"
+			onloaded="init()"
+		/>
+
+	<action name="init">
+		plugin[customAction].init();
+	</action>
+
+
+	<action name="hiddenHotspot" keep="true">
+
+		for(set(i,0),i LT hotspot.count,inc(i),
+			set(classstyle,get(hotspot[get(i)].style));
+
+			plugin[customAction].stylenamecontain(get(classstyle),%1);
+			<!-- debugvar(get(plugin[customAction].value)); -->
+            <!-- set(bbb,plugin[customAction].stylenamecontain(get(classstyle),%1)); -->
+			
+			<!-- 如果两个热点坐标纵坐标高度相差小 并且横坐标接进，改第二个为矮的哪一个 -->
+			if(%1 == hotspot[get(i)].style OR %2 == hotspot[get(i)].style OR plugin[customAction].value OR hotspot[get(i)].style == 'logo',
+				if(hotspot[get(i)].visible == false,
+					<!-- debugvar(%1); -->
+					set(hotspot[get(i)].visible,true);
+				);
+				,
+				if(hotspot[get(i)].visible == true, 
+					set(hotspot[get(i)].visible,false);
+				);
+			);
+		  
+		);
+
+
+	</action>
+
+</krpano>

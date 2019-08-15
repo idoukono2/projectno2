@@ -1,0 +1,577 @@
+<krpano>
+
+    <!--base热点定义-->
+    <style name="_base_hotspot"
+      crop="0|0|128|128"
+      framewidth="128"
+      frameheight="128"
+      frame="0"
+      lastframe="24"
+      scale="0.7"
+      edge="top"
+      distorted="true"
+      onclick="hotspot_click()"
+      onloaded="add_all_the_time_tooltip();"
+      distorted.flash="false"
+      zoom="false"
+      />
+
+    <!--distorted是否是变形热点 为false时zoom才有效  -->
+    <style name="static_base_hotspot"
+      crop="0|0|100|100"
+      framewidth="100"
+      frameheight="100"
+      frame="0"
+      height="90"
+      lastframe="24"
+      scale="0.7"
+      edge="bottom"
+      distorted="false" 
+      onclick="hotspot_click()"
+      onloaded="add_all_the_time_tooltip_static()"
+      distorted.flash="false"
+      zoom="false"
+      />
+
+      <style name="static_base_hotspot_G"
+      crop="0|0|100|100"
+      framewidth="100"
+      frameheight="100"
+      frame="0"
+      lastframe="24"
+      scale="0.7"
+      edge="top"
+      distorted="true"
+      onclick="hotspot_click()"
+      onloaded="add_all_the_time_tooltip()"
+      distorted.flash="false"
+      zoom="false"
+      />
+
+      <!-- 随机边框 -->
+      <style name="static_base_hotspot_random"
+      crop="0|0|100|100"
+      framewidth="100"
+      frameheight="100"
+      frame="0"
+      lastframe="24"
+      scale="0.7"
+      edge="top"
+      distorted="true"
+      onclick="hotspot_click()"
+      onloaded="add_all_the_time_tooltip_static()"
+      distorted.flash="false"
+      zoom="false"
+      />
+
+      <!-- 图文热点 -->
+      <!-- 地铁站-->
+      <style name="traffic_subway"
+             iocnPath="./static/pano/hotspots/subway.jpg"
+             squareiocn="false"
+             url="../hotspots/line.png"
+             onloaded="add_icon_and_title()"
+             bgcolor="#ffffff"
+             scale="0.7"
+             edge="bottom"
+             onclick="hotspot_click()"
+             zoom="false"
+             distorted="false"
+             distorted.flash="false"
+             lastframe="24"
+             frame="0"
+        />
+      <!-- 隧道-->
+      <style name="traffic_tunnel"
+             iocnPath="./static/pano/hotspots/tunnel.jpg"
+             squareiocn="true"
+             url="../hotspots/line.png"
+             onloaded="add_icon_and_title()"
+             bgcolor="#ffffff"
+             scale="0.7"
+             edge="bottom"
+             onclick="hotspot_click()"
+             zoom="false"
+             distorted="false"
+             distorted.flash="false"
+             lastframe="24"
+             frame="0"
+        />
+      <!-- 飞机场-->
+      <style name="traffic_airport"
+             iocnPath="./static/pano/hotspots/airport.jpg"
+             squareiocn="true"
+             url="../hotspots/line.png"
+             onloaded="add_icon_and_title()"
+             bgcolor="#ffffff"
+             scale="0.7"
+             edge="bottom"
+             onclick="hotspot_click()"
+             zoom="false"
+             distorted="false"
+             distorted.flash="false"
+             lastframe="24"
+             frame="0"
+        />
+
+      <style name="pic_text_hotspotstyle_base"
+             url="../hotspots/line.png"
+             onloaded="add_icon_and_title()"
+             bgcolor="#ffffff"
+             scale="0.7"
+             edge="bottom"
+             onclick="hotspot_click()"
+             zoom="false"
+             distorted="false"
+             distorted.flash="false"
+             lastframe="24"
+             frame="0"
+        />
+
+    <!-- logo -->
+    <style name="logo"
+           url="https://resources.xycoder.com/hotspot/images/3yulinfu_logoG.png"
+           scale="0.3" 
+          edge="bottom" 
+          distorted="false"
+          tooltip=""
+          linkedscene=""
+          zoom="false"
+          linkedscene_lookat=""
+          onclick="logoHotspot_click();"
+          onloaded="if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); loadstyle(skin_tooltips); );"
+      />
+    <style name="skin_hotspotstyle" 
+          url="" 
+          scale="0.5" 
+          edge="top" 
+          distorted="true"
+          tooltip=""
+          linkedscene=""
+          linkedscene_lookat=""
+          onclick="skin_hotspotstyle_click();"
+          onover="tween(scale,0.55);"
+          onout="tween(scale,0.5);"
+          onloaded="if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); loadstyle(skin_tooltips); );"
+       />
+
+    <!--教育医疗  -->
+    <style name="education"
+           url="../hotspots/line.png"
+           bgcolor="#edaf10"
+          crop="0|0|100|100"
+          framewidth="100"
+          frameheight="100"
+          frame="0" 
+          height="90"
+          lastframe="24"
+          scale="0.7"
+          edge="bottom"
+          distorted="false" 
+          onclick="hotspot_click()"
+          onloaded="add_all_the_time_tooltip_static()"
+          distorted.flash="false"
+          zoom="false"
+      />
+      <!--公园绿化  -->
+    <style name="landscape"
+           url="../hotspots/line.png"
+           bgcolor="#6fb82b"
+           crop="0|0|100|100"
+          framewidth="100"
+          frameheight="100"
+          frame="0" 
+          height="90"
+          lastframe="24"
+          scale="0.7"
+          edge="bottom"
+          distorted="false" 
+          onclick="hotspot_click()"
+          onloaded="add_all_the_time_tooltip_static()"
+          distorted.flash="false"
+          zoom="false"
+      />
+      <!--商业配套  -->
+    <style name="business"
+           url="../hotspots/line.png"
+           bgcolor="#e65f32"
+           crop="0|0|100|100"
+          framewidth="100"
+          frameheight="100"
+          frame="0" 
+          height="90"
+          lastframe="24"
+          scale="0.7"
+          edge="bottom"
+          distorted="false" 
+          onclick="hotspot_click()"
+          onloaded="add_all_the_time_tooltip_static()"
+          distorted.flash="false"
+          zoom="false"
+      />
+      <!--产业园区  -->
+    <style name="industrialpark"
+           url="../hotspots/line.png"
+           bgcolor="#c5d119"
+           crop="0|0|100|100"
+          framewidth="100"
+          frameheight="100"
+          frame="0" 
+          height="90"
+          lastframe="24"
+          scale="0.7"
+          edge="bottom"
+          distorted="false" 
+          onclick="hotspot_click()"
+          onloaded="add_all_the_time_tooltip_static()"
+          distorted.flash="false"
+          zoom="false"
+      />
+
+      <!--道路  -->
+    <style name="traffic"
+           url="../hotspots/line.png"
+           bgcolor="#1d89b0"
+           textcolor="#1d89b0"
+           framewidth="100"
+          frameheight="100"
+          frame="0" 
+          height="90"
+          lastframe="24"
+          scale="0.7"
+          edge="bottom"
+          distorted="false" 
+          onclick="hotspot_click()"
+          onloaded="add_all_the_time_tooltip_static()"
+          distorted.flash="false"
+          zoom="false"
+      />
+
+      <!--道路  -->
+    <!-- <style name="traffic"
+           url="../hotspots/line2.png"
+           bgcolor="#ffffff"
+           textcolor="#1d89b0"
+           style="static_base_hotspot"
+      /> -->
+
+      <style name="static_text"
+           url="../hotspots/line.png"
+           style="static_base_hotspot"
+      />
+
+    <style name="static_text_random"
+           url="../hotspots/line.png"
+           style="static_base_hotspot_random"
+      />
+
+    <!--双前箭头-->
+    <style name="double_arrow"
+           url="../hotspots/new_spotd1_gif.png"
+           style="_base_hotspot"/>
+
+    <!--快速的双前箭头-->
+    <style name="double_arrow_quick"
+           url="../hotspots/new_spotd1_gif.png"
+           style="_base_hotspot"/>
+
+    <!--向左箭头-->
+    <style name="left_arrow"
+           url="../hotspots/new_spotd4_gif.png"
+           style="_base_hotspot"/>
+
+    <!--向右箭头-->
+    <style name="right_arrow"
+           url="../hotspots/new_spotd5_gif.png"
+           style="_base_hotspot"/>
+
+    <!--垂直的左箭头-->
+    <style name="left_arrow_vertical"
+           url="../hotspots/new_spotd2_gif.png"
+           style="_base_hotspot"/>
+
+    <!--垂直的右箭头-->
+    <style name="right_arrow_vertical"
+           url="../hotspots/new_spotd3_gif.png"
+           style="_base_hotspot"/>
+
+    <!--向下的箭头-->
+    <style name="down_arrow"
+           url="../hotspots/new_spotd12_gif.png"
+           style="_base_hotspot"/>
+
+    <!--向下的箭头-->
+    <style name="down_arrow_1"
+           url="down_arrow_1.png"
+           style="_base_hotspot"/>
+
+
+    <!--带圆圈的箭头-->
+    <style name="round_arrows"
+           url="round_arrows.png"
+           style="_base_hotspot"/>
+
+    <!--带圆环波纹的圆点-->
+    <style name="dot_ripple_hollow"
+           url="../hotspots/new_spotd6_gif.png"
+           style="_base_hotspot"/>
+
+    <!--带圆圈波纹的圆点-->
+    <style name="dot_ripple_solid"
+           url="../hotspots/new_spotd7_gif.png"
+           style="_base_hotspot"/>
+
+    <!--圆环-->
+    <style name="ring"
+           url="ring.png"
+           style="_base_hotspot"/>
+
+    <!--圆点-->
+    <style name="dot"
+           url="dot.png"
+           style="_base_hotspot"/>
+
+    <!--手-->
+    <style name="hand"
+           url="../hotspots/new_spotd8_gif.png"
+           style="_base_hotspot"/>
+
+    <!--放大镜-->
+    <style name="magnifier"
+           url="../hotspots/new_spotd9_gif.png"
+           style="_base_hotspot"/>
+
+    <!--加号-->
+    <style name="plus"
+           url="../hotspots/new_spotd10_gif.png"
+           style="_base_hotspot"/>
+
+    <!--小飞机-->
+    <style name="aircraft"
+           url="../hotspots/new_spotd11_gif.png"
+           style="_base_hotspot"/>
+
+
+    <!-- 多边形 -->
+    <style name="polygon"
+           visible="true"
+           bordercolor="0xffffff"
+           fillcolor="0xffffff"
+           borderwidth="1"
+           borderalpha="1"
+           fillalpha="0.60000000000000002"
+           capture="false"
+           onclick="hotspot_click()"
+    />
+
+
+		<hotspots_settings
+			tooltip_bgc='0x000000'
+			/>
+
+    <!-- <layer name="icon_and_title_hotspot" type="container" bgalpha="0.8" backgroundcolor="#ffffff">
+      <layer name="icon_and_title_hotspot_icon" type="image" url="./static/images/hotspots/subway.jpg" width="50" height="50"/>
+      <layer name="icon_and_title_hotspot_title" type="text" html="测试文字" autowidth="true" autowidth="autoheight" css="text-align:center; color:#181e63; font-family:黑体; font-size:20px;"/>
+    </layer> -->
+
+    <action name="add_icon_and_title">
+        txtadd(tooltipname, 'iocn_title_', get(name));
+        addlayer(get(tooltipname));
+        txtadd(layer[get(tooltipname)].parent, 'hotspot[', get(name), ']');
+        set(layer[get(tooltipname)].type,text);
+        set(layer[get(tooltipname)].align,top);
+        set(layer[get(tooltipname)].edge,bottom);
+        set(layer[get(tooltipname)].x,0);
+        set(layer[get(tooltipname)].y,26); 
+        set(layer[get(tooltipname)].autowidth,true);
+        set(layer[get(tooltipname)].autoheight,true);
+        set(layer[get(tooltipname)].roundedge,8);
+        set(layer[get(tooltipname)].backgroundcolor,get(bgcolor));
+        set(layer[get(tooltipname)].margin,0);
+        set(layer[get(tooltipname)].backgroundalpha,0.8);
+
+
+        if(lang !== NULL AND lang != "",
+            txtadd(real_message_id, get(lang), "_", get(hotspot[get(name)].text));
+            set(layer[get(tooltipname)].html, get(data[get(real_message_id)].content));
+        ,
+            set(layer[get(tooltipname)].html, get(text));
+        );
+
+        <!-- debugvar(get(iocnPath)); -->
+        txtadd(tooltipnameicon, 'iocn_title_', get(name),'_pic');
+        addlayer(get(tooltipnameicon));
+        txtadd(layer[get(tooltipnameicon)].parent, 'hotspot[', get(name), ']');
+        set(layer[get(tooltipnameicon)].type,image);
+        set(layer[get(tooltipnameicon)].url,get(iocnPath));
+        set(layer[get(tooltipnameicon)].align,top);
+        set(layer[get(tooltipnameicon)].edge,bottom);
+        set(layer[get(tooltipnameicon)].backgroundcolor,get(bgcolor));
+        set(layer[get(tooltipnameicon)].margin,0);
+        set(layer[get(tooltipnameicon)].backgroundalpha,0.8);
+
+        if(squareiocn !== true,
+          set(bgcss,'text-align:center; color:#181e63; font-family:黑体; font-size:10px;margin:0;padding:1px 4px 1px 45px;border-radius:8px;opacity:0.8;');
+          txtadd(bgcssG,get(bgcss),'background-color:',get(bgcolor));
+          set(layer[get(tooltipname)].css,get(bgcssG));
+
+          set(layer[get(tooltipnameicon)].width,35.35);
+          set(layer[get(tooltipnameicon)].height,14);
+          plugin[customAction].setoffset(get(text));
+          set(ttt,calc(-(plugin[customAction].offset + layer[get(tooltipnameicon)].width)/2 + layer[get(tooltipnameicon)].width/2));
+          set(layer[get(tooltipnameicon)].x,get(ttt));
+          set(layer[get(tooltipnameicon)].y,24); 
+        ,
+          set(bgcss,'text-align:center; color:#181e63; font-family:黑体; font-size:10px;margin:0;padding:1px 4px 1px 25px;border-radius:8px;opacity:0.8;');
+          txtadd(bgcssG,get(bgcss),'background-color:',get(bgcolor));
+          set(layer[get(tooltipname)].css,get(bgcssG));
+
+          set(layer[get(tooltipnameicon)].width,15);
+          set(layer[get(tooltipnameicon)].height,15);
+          plugin[customAction].setoffset(get(text));
+          set(bbb,calc(-(plugin[customAction].offset + layer[get(tooltipnameicon)].width)/2 + layer[get(tooltipnameicon)].width/2));
+          set(layer[get(tooltipnameicon)].x,get(bbb));
+          set(layer[get(tooltipnameicon)].y,24); 
+        )
+
+        
+        set(layer[get(tooltipname)].enabled,false);
+        
+    </action>
+    
+    <!-- 热点样式 -->
+    <action name="add_all_the_time_tooltip_static">
+        txtadd(tooltipname, 'tooltip_', get(name));
+        addlayer(get(tooltipname));
+        txtadd(layer[get(tooltipname)].parent, 'hotspot[', get(name), ']');
+        <!-- set(layer[get(tooltipname)].url,'%SWFPATH%/plugins/textfield/textfield.swf'); -->
+        set(layer[get(tooltipname)].type,text);
+        set(layer[get(tooltipname)].align,top);
+        set(layer[get(tooltipname)].edge,bottom);
+        set(layer[get(tooltipname)].x,0);
+        set(layer[get(tooltipname)].y,25);
+        set(layer[get(tooltipname)].autowidth,true);
+        set(layer[get(tooltipname)].autoheight,true);
+        set(layer[get(tooltipname)].roundedge,8);
+        set(layer[get(tooltipname)].backgroundcolor,get(hotspots_settings.tooltip_bgc));
+        <!-- if(tooltip !== NULL AND tooltip != "",
+            set(layer[get(tooltipname)].padding,6);
+            set(layer[get(tooltipname)].margin,6);
+        ); -->
+        set(layer[get(tooltipname)].backgroundalpha,0.6);
+        <!-- randomcolor -->
+        <!-- set(r,calc:random*255);
+        set(g,calc:random*255);
+        set(b,calc:random*255); -->
+        <!-- txtadd(randomcolourcss,'text-align:center; color:#FFFFFF; font-family:黑体; font-size:14px;padding:0 5px 0 5px;border-radius:10px;box-shadow:0 2px 0 rgb(',get(r),get(g),get(b),');'); -->
+        txtadd(randomcolourcss,'text-align:center; color:#FFFFFF; font-family:黑体; font-size:10px;padding:1px 4px 1px 4px;margin:0;border-radius:8px;border-style: solid; border-width:0 0 2px 0;border-color:',get(bgcolor),';');
+        set(layer[get(tooltipname)].css,get(randomcolourcss));
+
+        if(lang !== NULL AND lang != "",
+            txtadd(real_message_id, get(lang), "_", get(hotspot[get(name)].text));
+            set(layer[get(tooltipname)].html, get(data[get(real_message_id)].content));
+        ,
+            set(layer[get(tooltipname)].html, get(text));
+        );
+
+        set(layer[get(tooltipname)].enabled,false);
+    </action>
+
+
+    <action name="add_all_the_time_tooltip">
+        txtadd(tooltipname, 'tooltip_', get(name));
+        addlayer(get(tooltipname));
+        txtadd(layer[get(tooltipname)].parent, 'hotspot[', get(name), ']');
+        set(layer[get(tooltipname)].url,'%SWFPATH%/plugins/textfield/textfield.swf');
+        set(layer[get(tooltipname)].align,top);
+        set(layer[get(tooltipname)].edge,bottom);
+        set(layer[get(tooltipname)].x,0);
+        set(layer[get(tooltipname)].y,26); 
+        set(layer[get(tooltipname)].autowidth,true);
+        set(layer[get(tooltipname)].autoheight,true);
+        set(layer[get(tooltipname)].roundedge,5);
+        set(layer[get(tooltipname)].backgroundcolor,get(bgcolor));
+        set(layer[get(tooltipname)].margin,0);
+        set(layer[get(tooltipname)].backgroundalpha,0.3);
+
+        if(tooltip !== NULL AND tooltip != "",
+            set(layer[get(tooltipname)].padding,6);
+        );
+        
+        set(bgcss,'text-align:center; color:#FFFFFF; font-family:黑体; font-size:20px;padding:5px;border-radius:5px;margin:0px;opacity:0.8;');
+        <!-- debugvar(get(textcolor)); -->
+
+        if(
+          textcolor !== NULL AND textcolor != "" AND bgcolor !== NULL AND bgcolor != "",
+          txtadd(textcss,'text-align:center; color:',get(textcolor),'; font-family:黑体; font-size:20px;padding:5px;border-radius:5px;margin:0px;opacity:0.8;background-color:',get(bgcolor));
+          set(layer[get(tooltipname)].css,get(textcss));
+          ,
+          txtadd(textcssf,'text-align:center; color:#ffffff; font-family:黑体; font-size:20px;padding:5px;border-radius:5px;margin:0px;opacity:0.8;background-color:',get(bgcolor));
+          set(layer[get(tooltipname)].css,get(textcssf));
+        );
+
+        if(lang !== NULL AND lang != "",
+            txtadd(real_message_id, get(lang), "_", get(hotspot[get(name)].text));
+            set(layer[get(tooltipname)].html, get(data[get(real_message_id)].content));
+        ,
+            set(layer[get(tooltipname)].html, get(text));
+        );
+        
+        set(layer[get(tooltipname)].enabled,false);
+
+        <!-- hotspot_animate(); -->
+    </action>
+
+    <!--热点动画-->
+    <action name="hotspot_animate">
+        inc(frame,1,get(lastframe),0);
+        mul(ypos,frame,frameheight);
+        txtadd(crop,'0|',get(ypos),'|',get(framewidth),'|',get(frameheight));
+        delayedcall(0.03, if(loaded, hotspot_animate() ) );
+    </action>
+    
+    <action name="do_crop_animation" scope="local" args="framewidth, frameheight, framerate">
+    	<!-- 定义局部变量 -->
+    	calc(local.xframes, (caller.imagewidth /framewidth) BOR 0);
+    	calc(local.frames, xframes * ((caller.imageheight / frameheight) BOR 0));
+    	def(local.frame, integer, 0);
+    	<!-- 设置第一帧 -->
+    	calc(caller.crop, '0|0|' + framewidth + '|' + frameheight);
+    	<!-- 动画部分 -->
+    	setinterval(calc('crop_anim_' + caller.name), calc(1.0 / framerate),
+    		if(caller.loaded,
+    			inc(frame);
+    			if(frame GE frames, if(caller.onlastframe !== null, callwith(caller, onlastframe() ) ); set(frame,0); );
+    			mod(xpos, frame, xframes);
+    			div(ypos, frame, xframes);
+    			Math.floor(ypos);
+    			mul(xpos, framewidth);
+    			mul(ypos, frameheight);
+    			calc(caller.crop, xpos + '|' + ypos + '|' + framewidth + '|' + frameheight);
+    		  ,
+    			<!-- 当热点移除时停止动画 -->
+    			clearinterval(calc('crop_anim_' + caller.name));
+    		);
+    	);
+</action>
+
+<action name="logoHotspot_click">
+  <!-- debugvar(123); -->
+  plugin[customAction].logohotspotclick();
+</action>
+
+    <!--热点点击-->
+<action name="hotspot_click">
+  if(linkedscene, set(enabled,false);
+  		<!--skin_hidetooltips();-->
+  		if(dive,looktohotspot(get(name)));
+  		skin_gotoscene(get(linkedscene));
+      <!-- loadscene(get(linkedscene), null, get(skin_settings.loadscene_flags) ,get(skin_settings.loadscene_blend)); -->
+      <!--skin_updatescroll();    -->
+      <!-- txtadd(layer[skin_thumbborder].parent, 'skin_thumb_', get(scene[linkedscene].index)); -->
+      <!-- layer[skin_thumbs].scrolltocenter(get(scene[linkedscene].thumbx), get(scene[linkedscene].thumby)); -->
+  );
+</action>
+    
+    
+</krpano>

@@ -1,0 +1,190 @@
+<krpano>
+
+	<!-- <action name="startup">
+		if(startscene === null, copy(startscene,scene[0].name));
+		loadscene(get(startscene), null, MERGE);
+		if(autorotate.enabled,bombtimer(0));
+	</action>
+
+	<events onmousedown="set(bt,0);" />
+
+	<action name="bombtimer">
+		set(autorotate.enabled,true);
+		set(bt,%1);
+		add(bt,1);
+		delayedcall(1, bombtimer(get(bt)));
+		copy(bt_1,autorotate.speed);
+		Math.abs(bt_1);
+		div(bt_2,360,bt_1);
+		add(bt_2,autorotate.waittime);
+		if(bt GE bt_2, set(bt,0); nextscene(););
+	</action>
+
+
+	<action name="nextscene">
+		set(ns, get(scene[get(xml.scene)].index));
+		set(maxs, get(scene.count));
+		add(ns,1);
+		if(ns == maxs, set(ns,0));
+		loadscene(get(scene[get(ns)].name), null, MERGE, BLEND(1.5));
+	</action> -->
+
+	<!-- 小行星开场 -->
+	<!-- onenterfullscreen=""          切换到全屏显示执行
+        onexitfullscreen=""           从全屏切换回普通视图时执行
+        onxmlcomplete=""              XML文件加载完成时执行
+        onpreviewcomplete=""          预览图加载完成时执行
+        onloadcomplete=""             全景切片图片加载完毕时执行
+        onnewpano=""                  当启动新的全景场景时执行
+        onremovepano=""               当前场景被关闭时执行（加载新场景前）
+        onnewscene=""                 新场景加载完成时执行
+        onloaderror=""                加载错误时执行，执行被设置后，屏幕将不显示默认的错误信息
+        onkeydown=""                  当某个键盘被按下时执行
+        onkeyup=""                    当某个键盘松开时执行
+        onclick=""                    当鼠标点击全景场景时执行
+        onmousedown=""                当鼠标按下时执行
+        onmouseup=""                  当鼠标松开时执行
+        onmousewheel=""               当鼠标滚轮滚动时执行
+        onidle=""                     当无用户操作在设定秒数后执行
+        onviewchange=""               当场景转变时执行（渲染开始时）
+        onviewchanged=""              当场景转变时执行（渲染完成时）
+        onresize=""                   当浏览器大小改变时执行 -->
+	<!-- <events name="lp_events_" 
+			keep="true"
+	        onxmlcomplete="set(events[lp_events_].onxmlcomplete,null);if(device.webgl OR device.flash,skin_setup_littleplanetintro(););"
+	        onenterfullscreen="" 
+	        onexitfullscreen=""            
+	        onpreviewcomplete=""          
+	        onloadcomplete=""             
+	        onnewpano=""                  
+	        onremovepano=""               
+	        onnewscene=""                 
+	        onloaderror=""                
+	        onkeydown="set(abc,1);debugvar(abc);"                  
+	        onkeyup=""                    
+	        onclick="set(a,1);debugvar(a);"                    
+	        onmousedown=""                
+	        onmouseup=""                  
+	        onmousewheel=""               
+	        onidle=""                     
+	        onviewchange=""               
+	        onviewchanged=""              
+	        onresize=""                   
+	         /> -->
+
+	<!-- <action name="skin_setup_littleplanetintro">
+		copy(lp_scene, xml.scene);
+		copy(lp_hlookat, view.hlookat);
+		copy(lp_vlookat, view.vlookat);
+		copy(lp_fov, view.fov);
+		copy(lp_fovmax, view.fovmax);
+		copy(lp_limitview, view.limitview);
+		set(view.fovmax, 170);
+		set(view.limitview, lookto);
+		set(view.vlookatmin, 90);
+		set(view.vlookatmax, 90);
+		set_hotspot_visible(false);
+		set(layer[skin_layer].visible,false);set(layer[skin_layer].alpha,0);
+		set(layer[skin_control_bar].visible,false);set(layer[skin_control_bar].alpha,0);
+		set(layer[skin_splitter_bottom].visible,false);set(layer[skin_splitter_bottom].alpha,0);
+		lookat(calc(lp_hlookat - 180), 90, 150, 1, 0, 0);
+	        set(lp_running,true);
+		set(events[lp_events].onloadcomplete,
+		delayedcall(2.5,
+		if(lp_scene === xml.scene,
+		set(control.usercontrol, off);
+		copy(view.limitview, lp_limitview);
+		set(view.vlookatmin, null);
+		set(view.vlookatmax, null);
+		tween(view.hlookat|view.vlookat|view.fov|view.distortion, calc('' + lp_hlookat + '|' + lp_vlookat + '|' + lp_fov + '|' + 0.0),
+		3.0, easeOutQuad,
+		set(control.usercontrol, all);
+		tween(view.fovmax, get(lp_fovmax));
+		);
+	    set(lp_running,false);
+
+	    plugin[customAction].littleplanetended();
+
+
+
+		set_hotspot_visible(true);
+		set(layer[skin_layer].visible,true);tween(layer[skin_layer].alpha,1,1);
+		set(layer[skin_control_bar].visible,true);tween(layer[skin_control_bar].alpha,1,1);
+		set(layer[skin_splitter_bottom].visible,true);tween(layer[skin_splitter_bottom].alpha,1,1);
+		);
+		);
+		);
+
+	</action> -->
+
+	<action name="skin_setup_littleplanetintro">
+		copy(lp_scene, xml.scene);
+		copy(lp_hlookat, view.hlookat);
+		copy(lp_vlookat, view.vlookat);
+		copy(lp_fov, view.fov);
+		copy(lp_fovmax, view.fovmax);
+		copy(lp_limitview, view.limitview);
+		set(view.fovmax, 170);
+		set(view.limitview, lookto);
+		set(view.vlookatmin, 90);
+		set(view.vlookatmax, 90);
+		set_hotspot_visible(false);
+		<!-- set(layer[skin_layer].visible,false);set(layer[skin_layer].alpha,0); -->
+		<!-- set(layer[skin_control_bar].visible,false);set(layer[skin_control_bar].alpha,0); -->
+		<!-- set(layer[skin_splitter_bottom].visible,false);set(layer[skin_splitter_bottom].alpha,0); -->
+		lookat(calc(lp_hlookat - 180), 90, 150, 1, 0, 0);
+	        set(lp_running,true);
+		set(events[lp_events].onloadcomplete,
+			delayedcall(0.2,
+				if(lp_scene === xml.scene,
+					set(control.usercontrol, off);
+					copy(view.limitview, lp_limitview);
+					set(view.vlookatmin, null);
+					set(view.vlookatmax, null);
+					tween(view.hlookat|view.vlookat|view.fov|view.distortion, calc('' + lp_hlookat + '|' + lp_vlookat + '|' + lp_fov + '|' + 0.0),
+					3.0, easeOutQuad,
+					set(control.usercontrol, all);
+					tween(view.fovmax, get(lp_fovmax));
+				    set(lp_running,false);
+
+					<!-- set_hotspot_visible(true); -->
+
+					plugin[customAction].littleplanetended();
+					);
+					<!-- set(layer[skin_layer].visible,true);tween(layer[skin_layer].alpha,1,1); -->
+					<!-- set(layer[skin_control_bar].visible,true);tween(layer[skin_control_bar].alpha,1,1); -->
+					<!-- set(layer[skin_splitter_bottom].visible,true);tween(layer[skin_splitter_bottom].alpha,1,1); -->
+				);
+			);
+		);
+ 	</action>
+
+	<action name="set_hotspot_visible">
+		for(set(i,0),i LT hotspot.count,inc(i),
+		   if(%1 == false,
+		   	if(hotspot[get(i)].visible == true,
+		   		set(hotspot[get(i)].mark,true);set(hotspot[get(i)].visible,%1);
+		   		);
+		   	,
+		   	if(hotspot[get(i)].mark == true OR hotspot[get(i)].mark2 == true,
+		   		set(hotspot[get(i)].visible,%1);
+		   		);
+		   	);
+		  
+		);
+	</action>
+
+	<action name="custom_loadscene">
+		loadscene(%1);
+		set_hotspot_visible(false);
+	</action>
+
+	<!--转场-->
+	<action name="skin_gotoscene">
+		if(scene[%1],
+			copy(cursceneindex, scene[get(xml.scene)].index);
+			copy(newsceneindex, scene[%1].index);
+			skin_loadscene(get(newsceneindex), calc(newsceneindex LT cursceneindex ? skin_settings.loadscene_blend_prev : (newsceneindex GT cursceneindex ? skin_settings.loadscene_blend_next : skin_settings.loadscene_blend)) );
+		  );
+	</action>
+</krpano>

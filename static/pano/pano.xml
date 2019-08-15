@@ -1,0 +1,11 @@
+﻿<krpano>
+	
+	<include url="plugins/vtourAction.xml" /> 
+	<include url="plugins/config.xml" /> 
+	<include url="plugins/actionPlugin.xml" />
+	<include url="plugins/loadingbar.xml" /> 
+	<include url="plugins/hotspot.xml" /> 
+	<!-- 雨雪特效 -->
+	<!-- <include url="plugins/snow.xml" /> -->
+	
+</krpano>
