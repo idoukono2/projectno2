@@ -14,9 +14,9 @@ import XYAlertView from '@/pages/projectStatus'
 
 import Author from '@/pages/author'
 import Main from '@/pages/main'
-import Answer from '@/pages/Answer'
+import Answer from '@/pages/answer'
 import Failure from '@/pages/failure'
-import Success from '@/pages/Answer'
+import Success from '@/pages/success'
 import Award from '@/pages/award'
 
 
@@ -90,13 +90,13 @@ Vue.component('XYAlertView',XYAlertView);
       }
     },
     {
-      path: "/:projectId",
+      path: "/",
       name:'Index',
       redirect: function(to){
-        localStorage.setItem('project_id',to.params.projectId);
-        store.state.projectId = to.params.projectId;
-        console.log(store.state.projectId);
-
+        // localStorage.setItem('project_id',to.params.projectId);
+        // store.state.projectId = to.params.projectId;
+        // console.log(store.state.projectId);
+        console.log("重定向到首页")
         return "/main";
       }
     },
