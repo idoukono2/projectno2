@@ -1,7 +1,7 @@
 <template>
-	<div >
-		<div>首页</div>
-        <div @click="itemClick()">去答题页</div>
+	<div style="width: 100%;height: 100%;background-color: red">
+		<!--<img src="https://xingyb.oss-cn-hangzhou.aliyuncs.com/iosApp/dati.jpg"/>-->
+        <!--<div @click="itemClick()">去答题页</div>-->
 	</div>
 </template>
 
@@ -34,20 +34,6 @@
 </script>
 
 <style type="text/css" scoped>
-	ul{
-		padding:0px; 
-	}
-	li{
-		list-style-type: none;
-	}
+	
 
-	canvas {
-		display: block;
-		position: absolute;
-		bottom: 100px;
-		right: -24px;
-		z-index: 20;
-		cursor: pointer;
-		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	}
 </style>
