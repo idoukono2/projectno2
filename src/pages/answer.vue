@@ -1,8 +1,15 @@
 <template>
 	<div >
-		<div>答题页</div>
-        <div @click="itemClick(1)">去成功页</div>
-        <div @click="itemClick(0)">去失败页</div>
+		<div class="answerbgview">
+			<img style="width: 100%;" src="https://xingyb.oss-cn-hangzhou.aliyuncs.com/iosApp/headerbg.png"/>
+			<div style="width: 100%;height: 75%;background-color: deepskyblue;position: fixed;bottom: 0px;">
+				<div style="position: fixed;bottom: 0px;display: inherit;background-color: white;width: 100%;height: 45px;">
+					<button class="answerbtnClass" @click="startAnswer">开始答题</button>
+				</div>
+			</div>
+		</div>
+        <!--<div @click="itemClick(1)">去成功页</div>-->
+        <!--<div @click="itemClick(0)">去失败页</div>-->
 	</div>
 </template>
 
@@ -38,20 +45,21 @@
 </script>
 
 <style type="text/css" scoped>
-	ul{
-		padding:0px; 
-	}
-	li{
-		list-style-type: none;
-	}
-
-	canvas {
-		display: block;
+	.answerbgview{
+		width: 100%;
+		height: 100%;
+		background-color: #00b6af;
 		position: absolute;
-		bottom: 100px;
-		right: -24px;
-		z-index: 20;
-		cursor: pointer;
-		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	}
+	.answerbtnClass{
+		margin-left: 20%;
+		width: 60%;
+		height: 45px;
+		background-color: red;
+		line-height: 45px;
+		text-align: center;
+		margin-bottom: 15px;
+		border-radius: 10px;
+		font-size: 14px;
 	}
 </style>

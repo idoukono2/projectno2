@@ -1,5 +1,6 @@
 const state = {
-	baseUrl:'https://www.xycoder.com/',
+	// baseUrl:'https://www.xycoder.com/',
+    baseUrl:'http://192.168.0.107:8080/',
 
 	user:{
 		'user_id':null,
@@ -40,11 +41,6 @@ const state = {
 	favorite:0,//点赞数
 	isLiked:false,//是否点赞过
 
-	autoRoam:false,//自动漫游
-	gyroscope:false,//陀螺仪
-
-	dataRequestComplete:false,//是否请求过全景数据
-
 	positionSelectIndex:0,
 
 	//分享相关
@@ -53,6 +49,7 @@ const state = {
 	projectShareDetail:null,
 	projectShareLinkurl:null,
 
+	isFirstlaunch:false // 是否第一次进入，true是false否
 }
 
 export default state;
