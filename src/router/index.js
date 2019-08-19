@@ -34,6 +34,8 @@ Vue.component('XYSplash',XYSplash);
 Vue.component('Navigation',Navigation);
 Vue.component('XYTarbar',XYTarbar);
 Vue.component('XYAlertView',XYAlertView);
+// Vue.component('projectStatus',projectStatus);
+
 // Vue.component('progressbar',progressbar);
 
 
@@ -89,6 +91,14 @@ Vue.component('XYAlertView',XYAlertView);
         title:"答题页"
       }
     },
+      {
+          path:'/projectStatus',
+          name:'XYAlertView',
+          component:XYAlertView,
+          meta:{
+              title:"状态"
+          }
+      },
     {
       path: "/",
       name:'Index',
@@ -99,7 +109,7 @@ Vue.component('XYAlertView',XYAlertView);
         console.log("重定向到首页")
         return "/main";
       }
-    },
+    }
   ]
 })
 

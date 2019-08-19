@@ -9,9 +9,6 @@
 		<button-list id="vtourclass" v-show="$store.getters.navAndTabbarShow" :itemsList="itemsList" :mark="vtourclass" :textcolor="textcolor"></button-list>
 	</div>
 </template>
-
-<!-- <script src="@/js/pano.js"> </script> -->
-
 <script type="text/javascript">
 	// var panoJS=require("../js/pano.js");
 	import Vue from 'vue';

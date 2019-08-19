@@ -1,9 +1,7 @@
 <template>
 	<div class="alertcover">
-		<!-- <div id="statusbg"></div> -->
-		<img id="alertimage" src="https://resources.xycoder.com/vrdefault/images/status.png" />
-		<!-- <xy-progressbar :percentNum= "$store.state.loadingProgress"></xy-progressbar> -->
-		<!-- <span>{{$store.state.loadingProgress}}</span> -->
+		<!--<img id="alertimage" src="https://resources.xycoder.com/vrdefault/images/status.png" />-->
+		<img id="alertimage" :src = "item">
 	</div>
 </template>
 
@@ -18,8 +16,11 @@
 				progress:0,
 			}
 		},
+        props:{
+            item:''
+        },
 		mounted(){
-			// console.log(this.$route.params.projectId);
+
 		},
 	}
 </script>

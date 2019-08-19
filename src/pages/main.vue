@@ -43,24 +43,16 @@
                 return store.state.isFirstlaunch;
             },
 			getdata(){
-//                let url = store.state.baseUrl + 'problem/getProblemByIndex'
-                let url = 'http://192.168.0.107:8080/problem/getProblemByIndex'
-
+                let url = store.state.baseUrl + 'problem/getStatus'
                 console.log(url)
-
-                let params = {'userId':'1','isFirst':'0'};
-                this.$http.get(url,params,{emulateJSON:true}).then((res)=>
+                let params = {'userId':'111','isFirst':'0'};
+                this.$http.post(url,params,{emulateJSON:true}).then((res)=>
                 {
                     console.log(res)
-                    var realdata = res.data;
-                    if (realdata.success) {
 
-                    }else{
-
-                    }
                 },(err)=>
                 {
-                    console.log("获取分享信息网络失败:"+err);
+                    console.log("获取首失败:"+err);
 				});
 			}
 		}
