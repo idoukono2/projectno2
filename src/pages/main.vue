@@ -4,7 +4,7 @@
 		<div style="width: 100%;height: 80%;background-color: deepskyblue;position: fixed;bottom: 0px;">
 			<div style="position: fixed;bottom: 0px;display: inherit;background-color: white;width: 100%;height: 120px;">
 				<button class="startbtnClass" @click="startAnswer">开始答题</button>
-				<button :class="{'awrrdbtnClassFirst':getisFirstlaunch,'awrrdbtnClass': !getisFirstlaunch}" @click="getAward">兑奖</button>
+				<button :class="{'awrrdbtnClassFirst':!canaward,'awrrdbtnClass': canaward}" @click="getAward">兑奖</button>
 			</div>
 		</div>
 	</div>
@@ -20,7 +20,9 @@
 		name:"toolBar",
 		data(){
 			return{
-			    isfirst:true
+			    isfirst:true,
+				cananswer:false,
+				canaward:false
 			}
 		},
 		mounted(){
@@ -33,10 +35,18 @@
 		methods:{
 			startAnswer(){
                 // 去答题页
-                let ths = this
-                ths.$router.push({path:"/answer"});
+				let ths = this
+				if (ths.cananswer == true){
+					ths.$router.push({path:"/answer"});
+				} else {
+					alert('您已经领取过三次奖品，无法通过答题获取更多奖品')
+				}
 			},
 			getAward(){
+				// if (this.canaward == false){
+				// 	alert('您必须一次性答对四道题才能够领取精品！')
+				// 	return
+				// }
 				this.$router.push({path:'/award'})
 			},
             getisFirstlaunch(){
@@ -44,13 +54,19 @@
             },
 			getdata(){
                 let url = store.state.baseUrl + 'problem/getStatus'
-                console.log(url)
-                let params = {'userId':'111','isFirst':'0'};
+                let params = {'userId':'1','isFirst':'0'};
                 this.$http.post(url,params,{emulateJSON:true}).then((res)=>
                 {
                     console.log(res)
+					if (res.body.success == true){
+						this.cananswer = res.body.data.can_answer
+						this.canaward = res.body.data.can_award
+						console.log("看赋值")
+						console.log(this.cananswer)
+						console.log(this.canaward)
+					}
 
-                },(err)=>
+				},(err)=>
                 {
                     console.log("获取首失败:"+err);
 				});

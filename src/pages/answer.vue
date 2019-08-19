@@ -3,11 +3,11 @@
 		<div class="answerbgview">
 			<img style="width: 100%;" src="https://xingyb.oss-cn-hangzhou.aliyuncs.com/iosApp/headerbg.png"/>
 			<div style="width: 100%;height: 75%;background-color: deepskyblue;position: fixed;bottom: 0px;">
-				<div class="answertitleClass">你最喜欢的赵丽颖的哪一个影视作品？单项选择题不能选一个</div>
+				<div class="answertitleClass">{{dataModel.problem_content}}</div>
 				<!--<div style="position: fixed;bottom: 110px;display: inherit;width: 100%;">-->
-					<button @click="chooseAnswer(0)" class="answerbtnClass" style="background-color: #ff7b51">{{answerArray[0]}}</button>
-					<button @click="chooseAnswer(1)" class="answerbtnClass" style="background-color: #48d2dd">{{answerArray[1]}}</button>
-					<button @click="chooseAnswer(2)" class="answerbtnClass" style="background-color: #6f8eff">{{answerArray[2]}}</button>
+					<button @click="chooseAnswer(0)" class="answerbtnClass" style="background-color: #ff7b51">{{answerArray[0].answer_content}}</button>
+					<button @click="chooseAnswer(1)" class="answerbtnClass" style="background-color: #48d2dd">{{answerArray[1].answer_content}}</button>
+					<button @click="chooseAnswer(2)" class="answerbtnClass" style="background-color: #6f8eff">{{answerArray[2].answer_content}}</button>
 				<!--</div>-->
 				<!--<div style="position: fixed;bottom: 25px;display: inherit;width: 100%;height: 45px;">-->
 					<button class="submitbtnClass" @click="submitAnswer">提交</button>
@@ -33,7 +33,7 @@
 			return{
                 answerResultstate:false,
 				dataModel:{},
-                answerArray:['老九门','知否知否','花千骨'],
+                answerArray:[],
 				questionId:'',
                 answerId:'',
                 comeontimestamp:'',
@@ -53,11 +53,33 @@
 		methods:{
             chooseAnswer(index){
                 console.log(index)
+				this.answerId = this.answerArray[index].answer_id
+				console.log(this.answerId)
 
 			},
             submitAnswer(){
                 var goontimestamp = (new Date()).getTime()
                 console.log(goontimestamp)
+
+				let url = store.state.baseUrl + 'problem/uploadAnswer'
+				console.log(url)
+				let params = {'userId':'1','problemId':this.dataModel.problem_id,'answerId':this.answerId,'startTime':this.comeontimestamp,'endTime':goontimestamp};
+                console.log(params)
+				this.$http.post(url,params,{emulateJSON:true}).then((res)=>
+				{
+					console.log(res)
+					if (res.body.success == true) {
+						this.answerResultstate = true
+						this.itemImage = 'https://resources.xycoder.com/vrdefault/images/status.png'
+						console.log("数据源")
+					} else {
+						this.answerResultstate = true
+						this.itemImage = 'https://xingyb.oss-cn-hangzhou.aliyuncs.com/iosApp/headerbg.png'
+					}
+				},(err)=>
+				{
+					console.log("提交题失败:"+err);
+				});
 			},
             getquestiondata(){
                 let url = store.state.baseUrl + 'problem/getProblemByIndex'
@@ -66,11 +88,12 @@
                 this.$http.post(url,params,{emulateJSON:true}).then((res)=>
                 {
                     console.log(res)
-//					this.dataModel = res.data.problemItem
-//					this.answerArray = this.dataModel.problem_answer
-//                    console.log("数据源")
-//                    console.log(this.dataModel)
-
+					if (res.body.success == true) {
+						this.dataModel = res.body.data.problemItem
+					this.answerArray = this.dataModel.problem_answer
+                    console.log("数据源")
+                    console.log(this.dataModel)
+					}
                 },(err)=>
                 {
                     console.log("获取题失败:"+err);

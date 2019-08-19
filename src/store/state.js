@@ -1,7 +1,6 @@
 const state = {
-	// baseUrl:'https://www.xycoder.com/',
-    baseUrl:'http://192.168.0.107:80/',
-
+    // baseUrl:'http://192.168.0.107:80/',
+	baseUrl:'http://2t55n00887.zicp.vip/',
 	user:{
 		'user_id':null,
 		'user_name':null,

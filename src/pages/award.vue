@@ -2,6 +2,8 @@
 	<div >
 		<div>领奖页</div>
         <div @click="itemClick()">去首页</div>
+		<div @click="alertShow()">去领奖</div>
+
 	</div>
 </template>
 
@@ -26,7 +28,34 @@
                 // 去答题页
                 let ths = this
                 ths.$router.push({path:"/main"});
-            }
+            },
+			getaward(){
+				let url = store.state.baseUrl + 'problem/getAward'
+				console.log(url)
+				let params = {'userId':'1','isFirst':'1'};
+				this.$http.post(url,params,{emulateJSON:true}).then((res)=>
+				{
+					console.log(res)
+					if (res.body.success == true) {
+						console.log("数据源")
+					}else {
+						alert(res.body.message)
+					}
+				},(err)=>
+				{
+					console.log("兑奖失败:"+err);
+				});
+			},
+			alertShow(){
+				var a=confirm("是否进行下一题！");
+				if(a){
+					console.log("继续下一题");
+					this.getaward()
+				}
+				else{
+					this.$router.push({path:"/main"});
+				}
+			}
 		}
 	}
 
