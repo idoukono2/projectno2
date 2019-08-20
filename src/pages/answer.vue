@@ -5,9 +5,9 @@
 			<div style="width: 100%;height: 75%;background-color: deepskyblue;position: fixed;bottom: 0px;">
 				<div class="answertitleClass">{{dataModel.problem_content}}</div>
 				<!--<div style="position: fixed;bottom: 110px;display: inherit;width: 100%;">-->
-					<button @click="chooseAnswer(0)" :class="{'answerbtnClass':selectStatus[0],'selectbtnClass': !selectStatus[0]}" style="background-color: #ff7b51">{{answerArray[0].answer_content}}</button>
-					<button @click="chooseAnswer(1)" :class="{'answerbtnClass':selectStatus[1],'selectbtnClass': !selectStatus[1]}" style="background-color: #48d2dd">{{answerArray[1].answer_content}}</button>
-					<button @click="chooseAnswer(2)" :class="{'answerbtnClass':selectStatus[2],'selectbtnClass': !selectStatus[2]}" style="background-color: #6f8eff">{{answerArray[2].answer_content}}</button>
+					<button @click="chooseAnswer(0)" :class="{'answerbtnClass0':!selectStatus0,'selectbtnClass': selectStatus0}">{{answerArray[0].answer_content}}</button>
+					<button @click="chooseAnswer(1)" :class="{'answerbtnClass1':!selectStatus1,'selectbtnClass': selectStatus1}">{{answerArray[1].answer_content}}</button>
+					<button @click="chooseAnswer(2)" :class="{'answerbtnClass2':!selectStatus2,'selectbtnClass': selectStatus2}">{{answerArray[2].answer_content}}</button>
 
 				<!--</div>-->
 				<!--<div style="position: fixed;bottom: 25px;display: inherit;width: 100%;height: 45px;">-->
@@ -39,7 +39,9 @@
 				answerResult:true,
 				dataModel:{},
                 answerArray:[],
-				selectStatus:[false,true,false],
+				selectStatus0:false,
+				selectStatus1:false,
+				selectStatus2:false,
 				questionId:'',
                 answerId:'',
                 comeontimestamp:'',
@@ -60,8 +62,22 @@
 		methods:{
             chooseAnswer(index){
                 console.log(index)
-				// this.selectStatus[index] = true
-
+				if (index == 0){
+					console.log("A")
+					this.selectStatus0 = true
+					this.selectStatus1 = false
+					this.selectStatus2 = false
+				} else if (index == 1) {
+					console.log('B')
+					this.selectStatus0 = false
+					this.selectStatus1 = true
+					this.selectStatus2 = false
+				} else {
+					console.log('C')
+					this.selectStatus0 = false
+					this.selectStatus1 = false
+					this.selectStatus2 = true
+				}
 				this.answerId = this.answerArray[index].answer_id
 				console.log(this.answerId)
 
@@ -117,6 +133,11 @@
 			nextStep(){
 				console.log("下一步")
 				this.answerResultstate = false
+
+				this.selectStatus0 = false
+				this.selectStatus1 = false
+				this.selectStatus2 = false
+
 				if (this.answerResult == false){
 					return
 				}
@@ -159,11 +180,33 @@
 		line-height: 30px;
 		margin-bottom: 40px;
 	}
-	.answerbtnClass{
+	.answerbtnClass0{
 		margin-left: 15%;
 		width: 70%;
 		height: 45px;
-		background-color: red;
+		background-color: #ff7b51;
+		line-height: 45px;
+		text-align: center;
+		margin-bottom: 15px;
+		border-radius: 10px;
+		font-size: 14px;
+	}
+	.answerbtnClass1{
+		margin-left: 15%;
+		width: 70%;
+		height: 45px;
+		background-color: #48d2dd;
+		line-height: 45px;
+		text-align: center;
+		margin-bottom: 15px;
+		border-radius: 10px;
+		font-size: 14px;
+	}
+	.answerbtnClass2{
+		margin-left: 15%;
+		width: 70%;
+		height: 45px;
+		background-color: #6f8eff;
 		line-height: 45px;
 		text-align: center;
 		margin-bottom: 15px;

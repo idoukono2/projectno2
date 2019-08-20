@@ -32,12 +32,13 @@
 			getaward(){
 				let url = store.state.baseUrl + 'problem/getAward'
 				console.log(url)
-				let params = {'userId':'1','isFirst':'1'};
+				let params = {'userId':'1','isFirst':'0'};
 				this.$http.post(url,params,{emulateJSON:true}).then((res)=>
 				{
 					console.log(res)
 					if (res.body.success == true) {
-						console.log("数据源")
+						console.log("领奖成功")
+						this.$router.push({path:"/main"});
 					}else {
 						alert(res.body.message)
 					}
