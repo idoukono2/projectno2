@@ -5,9 +5,10 @@
 			<div style="width: 100%;height: 75%;background-color: deepskyblue;position: fixed;bottom: 0px;">
 				<div class="answertitleClass">{{dataModel.problem_content}}</div>
 				<!--<div style="position: fixed;bottom: 110px;display: inherit;width: 100%;">-->
-					<button @click="chooseAnswer(0)" class="answerbtnClass" style="background-color: #ff7b51">{{answerArray[0].answer_content}}</button>
-					<button @click="chooseAnswer(1)" class="answerbtnClass" style="background-color: #48d2dd">{{answerArray[1].answer_content}}</button>
-					<button @click="chooseAnswer(2)" class="answerbtnClass" style="background-color: #6f8eff">{{answerArray[2].answer_content}}</button>
+					<button @click="chooseAnswer(0)" :class="{'answerbtnClass':selectStatus[0],'selectbtnClass': !selectStatus[0]}" style="background-color: #ff7b51">{{answerArray[0].answer_content}}</button>
+					<button @click="chooseAnswer(1)" :class="{'answerbtnClass':selectStatus[1],'selectbtnClass': !selectStatus[1]}" style="background-color: #48d2dd">{{answerArray[1].answer_content}}</button>
+					<button @click="chooseAnswer(2)" :class="{'answerbtnClass':selectStatus[2],'selectbtnClass': !selectStatus[2]}" style="background-color: #6f8eff">{{answerArray[2].answer_content}}</button>
+
 				<!--</div>-->
 				<!--<div style="position: fixed;bottom: 25px;display: inherit;width: 100%;height: 45px;">-->
 					<button class="submitbtnClass" @click="submitAnswer">提交</button>
@@ -18,6 +19,9 @@
 		<!--<XYAlertView :item ="item" v-else></XYAlertView>-->
 		<div class="alertcovers" v-if="answerResultstate">
 			<img id="alertimages" :src = "itemImage">
+			<div style="width: 100px;height: 45px;background-color: rebeccapurple;" @click="backtoMian">返回</div>
+			<div style="width: 100px;height: 45px;background-color: red;" @click="nextStep">下一步</div>
+
 		</div>
 	</div>
 </template>
@@ -32,8 +36,10 @@
 		data(){
 			return{
                 answerResultstate:false,
+				answerResult:true,
 				dataModel:{},
                 answerArray:[],
+				selectStatus:[false,true,false],
 				questionId:'',
                 answerId:'',
                 comeontimestamp:'',
@@ -44,8 +50,9 @@
             console.log("到答题页")
 			var comeontimestamp = (new Date()).getTime()
 			this.comeontimestamp = comeontimestamp
+
 			console.log(comeontimestamp)
-			this.getquestiondata()
+			this.getquestiondata(1)
         },
 		computed:{
 		},
@@ -53,6 +60,8 @@
 		methods:{
             chooseAnswer(index){
                 console.log(index)
+				// this.selectStatus[index] = true
+
 				this.answerId = this.answerArray[index].answer_id
 				console.log(this.answerId)
 
@@ -71,20 +80,23 @@
 					if (res.body.success == true) {
 						this.answerResultstate = true
 						this.itemImage = 'https://resources.xycoder.com/vrdefault/images/status.png'
-						console.log("数据源")
+						console.log("答对")
+						this.answerResult = true
 					} else {
 						this.answerResultstate = true
+						this.answerResult = false
 						this.itemImage = 'https://xingyb.oss-cn-hangzhou.aliyuncs.com/iosApp/headerbg.png'
+						console.log("答错")
 					}
 				},(err)=>
 				{
 					console.log("提交题失败:"+err);
 				});
 			},
-            getquestiondata(){
+            getquestiondata(index){
                 let url = store.state.baseUrl + 'problem/getProblemByIndex'
                 console.log(url)
-                let params = {'userId':'1','problemIndex':'1'};
+                let params = {'userId':'1','problemIndex':index};
                 this.$http.post(url,params,{emulateJSON:true}).then((res)=>
                 {
                     console.log(res)
@@ -99,6 +111,22 @@
                     console.log("获取题失败:"+err);
                 });
             },
+			backtoMian(){
+				this.$router.push({path:"/main"});
+			},
+			nextStep(){
+				console.log("下一步")
+				this.answerResultstate = false
+				if (this.answerResult == false){
+					return
+				}
+				if (this.dataModel.problem_id == '4'){
+					this.$router.push({path:"/award"});
+					return
+				}
+				var index = parseInt(this.dataModel.problem_id) + 1
+				this.getquestiondata(index)
+			},
 			itemClick(success){
                 // 去答题页
                 let ths = this
@@ -136,6 +164,17 @@
 		width: 70%;
 		height: 45px;
 		background-color: red;
+		line-height: 45px;
+		text-align: center;
+		margin-bottom: 15px;
+		border-radius: 10px;
+		font-size: 14px;
+	}
+	.selectbtnClass{
+		margin-left: 15%;
+		width: 70%;
+		height: 45px;
+		background-color: gray;
 		line-height: 45px;
 		text-align: center;
 		margin-bottom: 15px;

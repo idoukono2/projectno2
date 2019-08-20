@@ -54,6 +54,7 @@
             },
 			getdata(){
                 let url = store.state.baseUrl + 'problem/getStatus'
+				// 1第一次进入 0未出去状态
                 let params = {'userId':'1','isFirst':'0'};
                 this.$http.post(url,params,{emulateJSON:true}).then((res)=>
                 {

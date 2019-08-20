@@ -47,7 +47,7 @@
 				});
 			},
 			alertShow(){
-				var a=confirm("是否进行下一题！");
+				var a=confirm("兑奖按钮需要由工作人员当面操作，用户个人操作无效！");
 				if(a){
 					console.log("继续下一题");
 					this.getaward()
