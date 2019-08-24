@@ -1,18 +1,24 @@
 <template>
 	<div >
 		<div class="answerbgview">
-			<img style="width: 100%;" src="https://xingyb.oss-cn-hangzhou.aliyuncs.com/iosApp/headerbg.png"/>
-			<div style="width: 100%;height: 75%;background-color: deepskyblue;position: fixed;bottom: 0px;">
-				<div class="answertitleClass">{{dataModel.problem_content}}</div>
-				<!--<div style="position: fixed;bottom: 110px;display: inherit;width: 100%;">-->
-					<button @click="chooseAnswer(0)" :class="{'answerbtnClass0':!selectStatus0,'selectbtnClass': selectStatus0}">{{answerArray[0].answer_content}}</button>
-					<button @click="chooseAnswer(1)" :class="{'answerbtnClass1':!selectStatus1,'selectbtnClass': selectStatus1}">{{answerArray[1].answer_content}}</button>
-					<button @click="chooseAnswer(2)" :class="{'answerbtnClass2':!selectStatus2,'selectbtnClass': selectStatus2}">{{answerArray[2].answer_content}}</button>
+			<div>
+				<img class="answerlogologoDiv" src="https://resources.xycoder.com/kobelco/images/logo.png"/>
+			</div>
+			<div>
+				<img class="answerTitileDiv" src="https://resources.xycoder.com/kobelco/images/title.png"/>
+			</div>
 
-				<!--</div>-->
-				<!--<div style="position: fixed;bottom: 25px;display: inherit;width: 100%;height: 45px;">-->
-					<button class="submitbtnClass" @click="submitAnswer">提交</button>
-				<!--</div>-->
+			<div class="answerNum">{{ dataModel.problem_id }}</div>
+			<div class="ansbottomBg">
+				<div class="anstextClass">{{dataModel.problem_content}}</div>
+				<button @click="chooseAnswer(0)" :class="{'answerbtnClass0':!selectStatus0,'selectbtnClass': selectStatus0}">{{answerArray[0].answer_content}}</button>
+				<button @click="chooseAnswer(1)" :class="{'answerbtnClass1':!selectStatus1,'selectbtnClass': selectStatus1}">{{answerArray[1].answer_content}}</button>
+				<button @click="chooseAnswer(2)" :class="{'answerbtnClass2':!selectStatus2,'selectbtnClass': selectStatus2}">{{answerArray[2].answer_content}}</button>
+
+
+				<div class="answerbtnbgClass">
+					<button class="startbtnClass" @click="submitAnswer">提交</button>
+				</div>
 			</div>
 		</div>
 		<!--<XYAlertView :item ="item1" v-if="answerResultstate"></XYAlertView>-->
@@ -21,7 +27,6 @@
 			<img id="alertimages" :src = "itemImage">
 			<div style="width: 100px;height: 45px;background-color: rebeccapurple;" @click="backtoMian">返回</div>
 			<div style="width: 100px;height: 45px;background-color: red;" @click="nextStep">下一步</div>
-
 		</div>
 	</div>
 </template>
@@ -45,7 +50,7 @@
 				questionId:'',
                 answerId:'',
                 comeontimestamp:'',
-                itemImage:'https://resources.xycoder.com/vrdefault/images/status.png',
+                itemImage:'https://resources.xycoder.com/kobelco/images/success.png',
             }
 		},
         mounted(){
@@ -63,26 +68,26 @@
             chooseAnswer(index){
                 console.log(index)
 				if (index == 0){
-					console.log("A")
 					this.selectStatus0 = true
 					this.selectStatus1 = false
 					this.selectStatus2 = false
 				} else if (index == 1) {
-					console.log('B')
 					this.selectStatus0 = false
 					this.selectStatus1 = true
 					this.selectStatus2 = false
 				} else {
-					console.log('C')
 					this.selectStatus0 = false
 					this.selectStatus1 = false
 					this.selectStatus2 = true
 				}
 				this.answerId = this.answerArray[index].answer_id
 				console.log(this.answerId)
-
 			},
             submitAnswer(){
+            	if (this.answerId.length==0){
+            		alert("请选择答案再提交")
+					return
+				}
                 var goontimestamp = (new Date()).getTime()
                 console.log(goontimestamp)
 
@@ -95,18 +100,26 @@
 					console.log(res)
 					if (res.body.success == true) {
 						this.answerResultstate = true
-						this.itemImage = 'https://resources.xycoder.com/vrdefault/images/status.png'
+						this.itemImage = 'https://resources.xycoder.com/kobelco/images/success.png'
 						console.log("答对")
 						this.answerResult = true
 					} else {
 						this.answerResultstate = true
 						this.answerResult = false
-						this.itemImage = 'https://xingyb.oss-cn-hangzhou.aliyuncs.com/iosApp/headerbg.png'
+						this.itemImage = 'https://resources.xycoder.com/kobelco/images/fail.png'
 						console.log("答错")
 					}
+					this.selectStatus0 = false
+					this.selectStatus1 = false
+					this.selectStatus2 = false
+					this.answerId = ''
 				},(err)=>
 				{
 					console.log("提交题失败:"+err);
+					this.selectStatus0 = false
+					this.selectStatus1 = false
+					this.selectStatus2 = false
+					this.answerId = ''
 				});
 			},
             getquestiondata(index){
@@ -119,8 +132,6 @@
 					if (res.body.success == true) {
 						this.dataModel = res.body.data.problemItem
 					this.answerArray = this.dataModel.problem_answer
-                    console.log("数据源")
-                    console.log(this.dataModel)
 					}
                 },(err)=>
                 {
@@ -133,10 +144,6 @@
 			nextStep(){
 				console.log("下一步")
 				this.answerResultstate = false
-
-				this.selectStatus0 = false
-				this.selectStatus1 = false
-				this.selectStatus2 = false
 
 				if (this.answerResult == false){
 					return
@@ -166,76 +173,139 @@
 	.answerbgview{
 		width: 100%;
 		height: 100%;
-		background-color: #00b6af;
+		background-color: #01b6af;
 		position: absolute;
 	}
-	.answertitleClass{
-		margin-left: 20%;
-		width: 60%;
-		/*height: 90px;*/
+	.answerlogologoDiv{
+		margin-left: 8%;
+		margin-top: 8%;
+		width: 85px;
+		height: 8%;
+	}
+	.answerTitileDiv{
+		margin-left: 15%;
+		margin-top: 8%;
+		width: 70%;
+	}
+	.answerNum{
+		position: fixed;
+		bottom: calc(75% - 6.5vw);
+		left: 14vw;
+		width: 13vw;
+		height: 13vw;
+		line-height: 13vw;
 		background-color: red;
 		text-align: center;
-		font-size: 14px;
-		align-items: center;
-		line-height: 30px;
-		margin-bottom: 40px;
+		border-radius: 6.5vw;
+		z-index: 5;
+		background-image: url("https://resources.xycoder.com/kobelco/images/round.png");
+		background-size:100% 100%;
+		color: white;
+		font-size: 1.2em;
+	}
+	.ansbottomBg{
+		width: 100%;
+		height: 75%;
+		background-image: url("https://resources.xycoder.com/kobelco/images/bg_1.png");
+		background-size:100% 100%;
+		position: fixed;
+		bottom: 0px;
+	}
+	.anstextClass{
+		margin-left: 13%;
+		margin-top: 8%;
+		margin-bottom: 6%;
+		width: 74%;
+		line-height: 6vh;
+		font-size: 0.9rem;
+		text-align: center;
+		font-size: 1rem;
 	}
 	.answerbtnClass0{
-		margin-left: 15%;
-		width: 70%;
-		height: 45px;
-		background-color: #ff7b51;
-		line-height: 45px;
-		text-align: center;
-		margin-bottom: 15px;
+		margin-left: 13%;
+		width: 74%;
+		height: 8vh;
+		line-height: 8vh;
+		text-align: left;
+		color: white;
+		padding-left: 20px;
+		background-color: transparent;
+		border: none;
+		background-image: url("https://resources.xycoder.com/kobelco/images/option1.png");
+		background-size:100% 100%;
+		margin-bottom: 10px;
 		border-radius: 10px;
 		font-size: 14px;
 	}
 	.answerbtnClass1{
-		margin-left: 15%;
-		width: 70%;
-		height: 45px;
-		background-color: #48d2dd;
-		line-height: 45px;
-		text-align: center;
-		margin-bottom: 15px;
+		margin-left: 13%;
+		width: 74%;
+		height: 8vh;
+		text-align: left;
+		color: white;
+		padding-left: 20px;
+		background-color: transparent;
+		border: none;
+		background-image: url("https://resources.xycoder.com/kobelco/images/option2.png");
+		background-size:100% 100%;
+		line-height: 8vh;
+		margin-bottom: 10px;
 		border-radius: 10px;
 		font-size: 14px;
 	}
 	.answerbtnClass2{
-		margin-left: 15%;
-		width: 70%;
-		height: 45px;
-		background-color: #6f8eff;
-		line-height: 45px;
-		text-align: center;
-		margin-bottom: 15px;
+		margin-left: 13%;
+		width: 74%;
+		height: 8vh;
+		text-align: left;
+		color: white;
+		padding-left: 20px;
+		background-color: transparent;
+		border: none;
+		background-image: url("https://resources.xycoder.com/kobelco/images/option3.png");
+		background-size:100% 100%;
+		line-height: 8vh;
+		margin-bottom: 10px;
 		border-radius: 10px;
 		font-size: 14px;
 	}
 	.selectbtnClass{
-		margin-left: 15%;
-		width: 70%;
-		height: 45px;
-		background-color: gray;
-		line-height: 45px;
-		text-align: center;
-		margin-bottom: 15px;
+		margin-left: 13%;
+		width: 74%;
+		height: 8vh;
+		text-align: left;
+		color: white;
+		padding-left: 20px;
+		background-color: darkgray;
+		border: none;
+		line-height: 8vh;
+		margin-bottom: 10px;
 		border-radius: 10px;
 		font-size: 14px;
 	}
-	.submitbtnClass{
+	.answerbtnbgClass{
+		position: fixed;
+		bottom: 0px;
+		width: 100%;
+		height: 21%;
+	}
+	.startbtnClass{
+		/*font-family: '兰亭中黑';*/
+		position: fixed;
 		margin-left: 20%;
 		width: 60%;
-		height: 45px;
-		background-color: red;
-		line-height: 45px;
+		height: 8vh;
+		line-height: 8vh;
+		bottom: calc((21% - 8vh) / 2);
+		background-image: url("https://resources.xycoder.com/kobelco/images/button1.png");
+		background-size:100% 100%;
 		text-align: center;
-		margin-bottom: 15px;
 		border-radius: 10px;
-		font-size: 14px;
+		font-size: 1.1em;
+		color: white;
+		border: none;
+		background-color: transparent;
 	}
-
 	#alertimages{
 		margin: 0px;
 		padding: 0px;
