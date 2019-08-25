@@ -1,8 +1,20 @@
 <template>
-	<div >
-		<div>领奖页</div>
-        <div @click="itemClick()">去首页</div>
-		<div @click="alertShow()">去领奖</div>
+	<div class="abgview">
+		<div>
+			<img class="awardlogologoDiv" src="https://resources.xycoder.com/kobelco/images/logo.png"/>
+		</div>
+		<div>
+			<img class="awardTitileDiv" src="https://resources.xycoder.com/kobelco/images/title.png"/>
+		</div>
+		<img class="middleImage" src="https://resources.xycoder.com/kobelco/images/victory.png"/>
+		<img class="awardBottomImage" src="https://resources.xycoder.com/kobelco/images/result.png"/>
+		<button class="awardbtnClass" @click="alertShow">领奖</button>
+
+		<div style="overflow: auto;margin-left: 10%;width: 80%;color: white;height: 40px;line-height: 20px;font-size: 13px;position: fixed;bottom: 15px;">
+			<img style="float: left;width: 16px;height: 16px;margin-top: 2px;" src="https://resources.xycoder.com/kobelco/images/remind.png">
+			&nbsp;兑奖按钮需要由工作人员当面操作，用户个人操作无效
+		</div>
+		<!--<div @click="alertShow()">去领奖</div>-->
 
 	</div>
 </template>
@@ -63,20 +75,50 @@
 </script>
 
 <style type="text/css" scoped>
-	ul{
-		padding:0px; 
+	.abgview{
+		width: 100%;
+		height: 100%;
+		background-color: #01b6af;
+		position: absolute;
 	}
-	li{
-		list-style-type: none;
+	.awardlogologoDiv{
+		margin-left: 8%;
+		margin-top: 8%;
+		width: 85px;
+		height: 8%;
+	}
+	.awardTitileDiv{
+		margin-left: 15%;
+		margin-top: 8%;
+		width: 70%;
+		display: block;
+	}
+	.middleImage{
+		padding-top: 15%;
+		display: block;
+		margin: auto;
+		width: 100%;
 	}
 
-	canvas {
-		display: block;
-		position: absolute;
-		bottom: 100px;
-		right: -24px;
-		z-index: 20;
-		cursor: pointer;
-		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	.awardbtnClass{
+		position: fixed;
+		margin-left: 20%;
+		width: 60%;
+		height: 7vh;
+		line-height: 7vh;
+		bottom: 65px;
+		background-image: url("https://resources.xycoder.com/kobelco/images/button1.png");
+		background-size:100% 100%;
+		text-align: center;
+		border-radius: 10px;
+		font-size: 15px;
+		color: white;
+		border: none;
+		background-color: transparent;
+	}
+	.awardBottomImage{
+		position: fixed;
+		bottom: 0px;
+		width: 100%;
 	}
 </style>

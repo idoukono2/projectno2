@@ -22,15 +22,14 @@
 	import Vue from "vue";
 	import toolitem from '@/components/Tool-item';
 	import store from '@/store/index.js';
-
 	Vue.component("toolitem",toolitem);
 	export default{
 		name:"toolBar",
 		data(){
 			return{
 			    isfirst:true,
-				cananswer:true,
-				canaward:true
+				cananswer:false,
+				canaward:false
 			}
 		},
 		mounted(){
@@ -51,33 +50,33 @@
 				}
 			},
 			getAward(){
-				// if (this.canaward == false){
-				// 	alert('您必须一次性答对四道题才能够领取精品！')
-				// 	return
-				// }
+				if (this.canaward == false){
+					alert('您必须一次性答对四道题才能够领取精品！')
+					return
+				}
 				this.$router.push({path:'/award'})
 			},
             getisFirstlaunch(){
                 return store.state.isFirstlaunch;
             },
 			getdata(){
-                // let url = store.state.baseUrl + 'problem/getStatus'
-				// // 1第一次进入 0未出去状态
-                // let params = {'userId':'1','isFirst':'0'};
-                // this.$http.post(url,params,{emulateJSON:true}).then((res)=>
-                // {
-                //     console.log(res)
-				// 	if (res.body.success == true){
-				// 		this.cananswer = res.body.data.can_answer
-				// 		this.canaward = res.body.data.can_award
-				// 		console.log("看赋值")
-				// 		console.log(this.cananswer)
-				// 		console.log(this.canaward)
-				// 	}
-				// },(err)=>
-                // {
-                //     console.log("获取首失败:"+err);
-				// });
+                let url = store.state.baseUrl + 'problem/getStatus'
+				// 1第一次进入 0未出去状态
+                let params = {'userId':'1','isFirst':'0'};
+                this.$http.post(url,params,{emulateJSON:true}).then((res)=>
+                {
+                    console.log(res)
+					if (res.body.success == true){
+						this.cananswer = res.body.data.can_answer
+						this.canaward = res.body.data.can_award
+						console.log("看赋值")
+						console.log(this.cananswer)
+						console.log(this.canaward)
+					}
+				},(err)=>
+                {
+                    console.log("获取首失败:"+err);
+				});
 			}
 		}
 	}
