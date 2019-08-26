@@ -31,7 +31,12 @@
 			return{
 			}
 		},
-
+        mounted(){
+            console.log("到领奖页")
+            store.state.isFirstlaunch = false
+            console.log("是否首次")
+            console.log(store.state.isFirstlaunch)
+        },
 		computed:{
 		},
 

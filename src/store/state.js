@@ -48,7 +48,7 @@ const state = {
 	projectShareDetail:null,
 	projectShareLinkurl:null,
 
-	isFirstlaunch:false // 是否第一次进入，true是false否
+	isFirstlaunch:true // 是否第一次进入，true是false否
 }
 
 export default state;

@@ -28,12 +28,16 @@
 		data(){
 			return{
 			    isfirst:true,
-				cananswer:false,
-				canaward:false
+				cananswer:true,
+				canaward:true
 			}
 		},
 		mounted(){
             console.log("到首页")
+
+            this.isfirst = this.getisFirstlaunch()
+            console.log("是否首次")
+            console.log(this.isfirst)
 			this.getdata()
     	},
 		computed:{
@@ -61,14 +65,14 @@
             },
 			getdata(){
                 let url = store.state.baseUrl + 'problem/getStatus'
-				// 1第一次进入 0未出去状态
-                let params = {'userId':'1','isFirst':'0'};
+				// true 1第一次进入 false0未出去状态
+                let params = {'userId':'1','isFirst':this.isfirst};
                 this.$http.post(url,params,{emulateJSON:true}).then((res)=>
                 {
                     console.log(res)
 					if (res.body.success == true){
-						this.cananswer = res.body.data.can_answer
-						this.canaward = res.body.data.can_award
+//						this.cananswer = res.body.data.can_answer
+//						this.canaward = res.body.data.can_award
 						console.log("看赋值")
 						console.log(this.cananswer)
 						console.log(this.canaward)

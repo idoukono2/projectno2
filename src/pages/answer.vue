@@ -24,10 +24,21 @@
 		<!--<XYAlertView :item ="item1" v-if="answerResultstate"></XYAlertView>-->
 		<!--<XYAlertView :item ="item" v-else></XYAlertView>-->
 		<div class="alertcovers" v-if="answerResultstate">
-			<img id="alertimages" :src = "itemImage">
-			<div style="width: 100px;height: 45px;background-color: rebeccapurple;" @click="backtoMian">返回</div>
-			<div style="width: 100px;height: 45px;background-color: red;" @click="nextStep">下一步</div>
+			<img class="alertimages" :src = "itemImage">
+			<div class="smallBtnBgview">
+			<div class="backsmallBtns" @click="backtoMian">返回</div>
+			<div class="nextsmallBtns" @click="nextStep">下一步</div>
+			</div>
 		</div>
+		<!--<div class="alertcovers" v-if="answerResultstate">-->
+			<!--<div class="alertimages">-->
+			<!--</div>-->
+			<!--&lt;!&ndash;<img class="alertimages" :src = "itemImage">&ndash;&gt;-->
+			<!--&lt;!&ndash;<div class="smallBtnBgview">&ndash;&gt;-->
+				<!--&lt;!&ndash;<div class="backsmallBtns" @click="backtoMian">返回</div>&ndash;&gt;-->
+				<!--&lt;!&ndash;<div class="nextsmallBtns" @click="nextStep">下一步</div>&ndash;&gt;-->
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
+		<!--</div>-->
 	</div>
 </template>
 
@@ -55,6 +66,9 @@
 		},
         mounted(){
             console.log("到答题页")
+            store.state.isFirstlaunch = false
+            console.log("是否首次")
+            console.log(store.state.isFirstlaunch)
 			var comeontimestamp = (new Date()).getTime()
 			this.comeontimestamp = comeontimestamp
 
@@ -100,13 +114,13 @@
 					console.log(res)
 					if (res.body.success == true) {
 						this.answerResultstate = true
-						this.itemImage = 'https://resources.xycoder.com/kobelco/images/success.png'
+						this.itemImage = 'https://resources.xycoder.com/kobelco/images/success_g.png'
 						console.log("答对")
 						this.answerResult = true
 					} else {
 						this.answerResultstate = true
 						this.answerResult = false
-						this.itemImage = 'https://resources.xycoder.com/kobelco/images/fail.png'
+						this.itemImage = 'https://resources.xycoder.com/kobelco/images/fail_g.png'
 						console.log("答错")
 					}
 					this.selectStatus0 = false
@@ -306,16 +320,46 @@
 		border: none;
 		background-color: transparent;
 	}
-	#alertimages{
+	.alertimages{
+		background-color: lightgray;
 		margin: 0px;
 		padding: 0px;
-		width: 60%;
-		top:50%;
-		left:50%;
-		border-radius: 20px;
-		position: absolute;
-		transform:translate(-50%,-50%);
+		position: relative;
+		width: 100%;
+		top:25%;
+		/*transform:translate(5%,0%);*/
 		text-align: center;
+		background-image: url("https://resources.xycoder.com/kobelco/images/success_g.png");
+		background-size:100% 100%;
+	}
+	.smallBtnBgview{
+		display: flex;
+		position: fixed;
+		top: 50%;
+		margin-left: 20%;
+	}
+	.backsmallBtns{
+		width: 100px;
+		height: 45px;
+		background-color: transparent;
+		line-height: 45px;
+		background-image: url("https://resources.xycoder.com/kobelco/images/button1_small.png");
+		background-size:100% 100%;
+		border: none;
+		text-align: center;
+		color: white;
+	}
+
+	.nextsmallBtns{
+		width: 100px;
+		height: 45px;
+		background-color: transparent;
+		line-height: 45px;
+		background-image: url("https://resources.xycoder.com/kobelco/images/button2_small.png");
+		background-size:100% 100%;
+		border: none;
+		text-align: center;
+		color: white;
 	}
 	.alertcovers{
 		position: absolute;
