@@ -14,8 +14,6 @@
 			<img style="float: left;width: 16px;height: 16px;margin-top: 2px;" src="https://resources.xycoder.com/kobelco/images/remind.png">
 			&nbsp;兑奖按钮需要由工作人员当面操作，用户个人操作无效
 		</div>
-		<!--<div @click="alertShow()">去领奖</div>-->
-
 	</div>
 </template>
 
@@ -111,7 +109,7 @@
 		width: 60%;
 		height: 7vh;
 		line-height: 7vh;
-		bottom: 65px;
+		bottom: 72px;
 		background-image: url("https://resources.xycoder.com/kobelco/images/button1.png");
 		background-size:100% 100%;
 		text-align: center;

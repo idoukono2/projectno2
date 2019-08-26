@@ -23,22 +23,16 @@
 		</div>
 		<!--<XYAlertView :item ="item1" v-if="answerResultstate"></XYAlertView>-->
 		<!--<XYAlertView :item ="item" v-else></XYAlertView>-->
+
 		<div class="alertcovers" v-if="answerResultstate">
-			<img class="alertimages" :src = "itemImage">
-			<div class="smallBtnBgview">
-			<div class="backsmallBtns" @click="backtoMian">返回</div>
-			<div class="nextsmallBtns" @click="nextStep">下一步</div>
+			<div class="alertimagesbg">
+				<img class="alertimages" :src = "itemImage">
+				<div class="smallBtnBgview">
+				<div class="backsmallBtns" @click="backtoMian">返回</div>
+				<div class="nextsmallBtns" @click="nextStep">下一步</div>
+				</div>
 			</div>
 		</div>
-		<!--<div class="alertcovers" v-if="answerResultstate">-->
-			<!--<div class="alertimages">-->
-			<!--</div>-->
-			<!--&lt;!&ndash;<img class="alertimages" :src = "itemImage">&ndash;&gt;-->
-			<!--&lt;!&ndash;<div class="smallBtnBgview">&ndash;&gt;-->
-				<!--&lt;!&ndash;<div class="backsmallBtns" @click="backtoMian">返回</div>&ndash;&gt;-->
-				<!--&lt;!&ndash;<div class="nextsmallBtns" @click="nextStep">下一步</div>&ndash;&gt;-->
-			<!--&lt;!&ndash;</div>&ndash;&gt;-->
-		<!--</div>-->
 	</div>
 </template>
 
@@ -114,13 +108,17 @@
 					console.log(res)
 					if (res.body.success == true) {
 						this.answerResultstate = true
-						this.itemImage = 'https://resources.xycoder.com/kobelco/images/success_g.png'
+						if (this.dataModel.problem_id == '4'){
+							this.itemImage = 'https://resources.xycoder.com/kobelco/images/success_g2.png'
+						} else {
+							this.itemImage = 'https://resources.xycoder.com/kobelco/images/bingo_g2.png'
+						}
 						console.log("答对")
 						this.answerResult = true
 					} else {
 						this.answerResultstate = true
 						this.answerResult = false
-						this.itemImage = 'https://resources.xycoder.com/kobelco/images/fail_g.png'
+						this.itemImage = 'https://resources.xycoder.com/kobelco/images/fail_g2.png'
 						console.log("答错")
 					}
 					this.selectStatus0 = false
@@ -320,41 +318,52 @@
 		border: none;
 		background-color: transparent;
 	}
-	.alertimages{
-		background-color: lightgray;
+	.alertimagesbg{
+		/*background-color: lightgray;*/
 		margin: 0px;
+		padding: 0px;
+		position: relative;
+		width: 110%;
+		left: -5%;
+		top:25%;
+		text-align: center;
+	}
+	.alertimages{
+		/*background-color: red;*/
+		margin: auto;
 		padding: 0px;
 		position: relative;
 		width: 100%;
 		top:25%;
-		/*transform:translate(5%,0%);*/
+		transform:translate(0%,0%);
 		text-align: center;
-		background-image: url("https://resources.xycoder.com/kobelco/images/success_g.png");
-		background-size:100% 100%;
 	}
 	.smallBtnBgview{
 		display: flex;
-		position: fixed;
-		top: 50%;
-		margin-left: 20%;
+		position: absolute;
+		/*top: 50%;*/
+		bottom: 20px;
+		left: 22%;
+		/*background-color: rebeccapurple;*/
 	}
 	.backsmallBtns{
-		width: 100px;
-		height: 45px;
+		width: 26vw;
+		height: 46px;
 		background-color: transparent;
-		line-height: 45px;
+		line-height: 46px;
 		background-image: url("https://resources.xycoder.com/kobelco/images/button1_small.png");
 		background-size:100% 100%;
 		border: none;
 		text-align: center;
 		color: white;
+		margin-right: 20px;
 	}
 
 	.nextsmallBtns{
-		width: 100px;
-		height: 45px;
+		width: 26vw;
+		height: 46px;
 		background-color: transparent;
-		line-height: 45px;
+		line-height: 46px;
 		background-image: url("https://resources.xycoder.com/kobelco/images/button2_small.png");
 		background-size:100% 100%;
 		border: none;
