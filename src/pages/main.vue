@@ -22,6 +22,7 @@
 	import Vue from "vue";
 	import toolitem from '@/components/Tool-item';
 	import store from '@/store/index.js';
+	import encrypt from '@/js/encrypt.js';
 	Vue.component("toolitem",toolitem);
 	export default{
 		name:"toolBar",
@@ -33,11 +34,13 @@
 			}
 		},
 		mounted(){
+			var _self = this;
             console.log("到首页")
             this.isfirst = this.getisFirstlaunch() ? 1 : 0
             console.log("是否首次")
             console.log(this.isfirst)
 			this.getdata()
+			_self.getSignInfo();
     	},
 		computed:{
 
@@ -65,7 +68,7 @@
 			getdata(){
                 let url = store.state.baseUrl + 'problem/getStatus'
 				// true 1第一次进入 false0未出去状态
-                let params = {'userId':'1','isFirst':this.isfirst};
+                let params = {'userId':localStorage.getItem('user_id'),'isFirst':this.isfirst};
                 this.$http.post(url,params,{emulateJSON:true}).then((res)=>
                 {
                     console.log(res)
@@ -80,6 +83,35 @@
                 {
                     console.log("获取首失败:"+err);
 				});
+			},
+			getSignInfo:function(){
+				if (encrypt.platform() == 'wechat') {
+					// alert(encodeURIComponent(window.location.href.split('#')[0]));
+				//获取分享信息
+			        let url = store.state.baseUrl + 'author2/getSignInfo';
+			        let params ={
+			        	'user_id':localStorage.getItem('user_id'),
+			        	'project_id':localStorage.getItem('project_id'),
+			        	'url':encodeURIComponent(window.location.href.split('#')[0]),
+			        	// 'project_id':localStorage.getItem('project_id'),
+			    	}
+
+			    	this.$http.post(url,params,{emulateJSON:true}).then((res)=>
+		    		{	
+		    			var realdata = res.data;
+		    			if (realdata.success) {
+		    				// alert(realdata.data.url);
+		    				encrypt.shareSdk(realdata.data.appId,realdata.data.timestamp,realdata.data.nonceStr,realdata.data.signature,realdata.data.url);
+		    			}else{
+		    				// alert("获取分享信息接口失败:" + realdata.message);
+		    				console.log("获取分享信息接口失败:" + realdata.message);
+		    			}
+		    		},(err)=>
+		    		{
+		    			console.log("获取分享信息网络失败:"+err);
+		    			// alert("获取分享信息网络失败:"+err);
+		    		});
+				}
 			}
 		}
 	}
@@ -87,6 +119,11 @@
 </script>
 
 <style type="text/css" scoped>
+	/* @import './style/index.css'; */
+	@font-face{
+		font-family: fzlthtFont;
+    	src: url('../assets/style/FZLTHJW.ttf');
+	}
 	.bgview{
 		width: 100%;
 		height: 100%;
@@ -121,6 +158,7 @@
 		bottom: 0px;
 	}
 	.maintextClass{
+		font-family: 'fzlthtFont';
 		margin-left: 15%;
 		width: 70%;
 		line-height: 32px;
@@ -133,7 +171,7 @@
 		height: 21%;
 	}
 	.startbtnClass{
-		/*font-family: '兰亭中黑';*/
+		font-family: 'fzlthtFont';
 		position: fixed;
 		margin-left: 20%;
 		width: 60%;
@@ -148,8 +186,13 @@
 		color: white;
 		border: none;
 		background-color: transparent;
+		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		*filter: Glow(color=#000, strength=1);
 	}
 	.awrrdbtnClass{
+		font-family: 'fzlthtFont';
 		position: fixed;
 		margin-left: 20%;
 		width: 60%;
@@ -164,6 +207,10 @@
 		color: white;
 		border: none;
 		background-color: transparent;
+		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		*filter: Glow(color=#000, strength=1);
 	}
 	.awrrdbtnClassFirst{
 		margin-left: 20%;

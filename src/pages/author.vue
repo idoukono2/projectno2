@@ -31,7 +31,7 @@
 		methods:{
 			  getUserInfoWithCode:function(code){
 			  	let ths = this;
-				  let url = store.state.baseUrl + 'author/getUserInfoIdByCode';
+				  let url = store.state.baseUrl + 'author2/getUserInfoIdByCode';
 				  let params = {'code':code};
 					console.log(code);
 					// alert(code);
@@ -46,7 +46,7 @@
 				        store.state.user = realdata.data;
 				        // console.log(realdata);
 				        localStorage.setItem('user_id',store.state.user.user_id);
-				        ths.$router.push({path:"/aerialview"});
+				        ths.$router.push({path:"/main"});
 				        // window.location.href = realdata.data.authorize_url;
 
 				     }
@@ -59,7 +59,7 @@
 				},
 
 			  AuthorUrl:function(){
-				  let url = store.state.baseUrl + 'author/getAuthorUrl';
+				  let url = store.state.baseUrl + 'author2/getAuthorUrl';
 				  let params = {'project_id':localStorage.getItem('project_id')};
 				  this.$http.post(url,params,{emulateJSON:true}).then((res)=>
 				  {

@@ -101,7 +101,7 @@
 
 				let url = store.state.baseUrl + 'problem/uploadAnswer'
 				console.log(url)
-				let params = {'userId':'1','problemId':this.dataModel.problem_id,'answerId':this.answerId,'startTime':this.comeontimestamp,'endTime':goontimestamp};
+				let params = {'userId':localStorage.getItem('user_id'),'problemId':this.dataModel.problem_id,'answerId':this.answerId,'startTime':this.comeontimestamp,'endTime':goontimestamp};
                 console.log(params)
 				this.$http.post(url,params,{emulateJSON:true}).then((res)=>
 				{
@@ -137,7 +137,7 @@
             getquestiondata(index){
                 let url = store.state.baseUrl + 'problem/getProblemByIndex'
                 console.log(url)
-                let params = {'userId':'1','problemIndex':index};
+                let params = {'userId':localStorage.getItem('user_id'),'problemIndex':index};
                 this.$http.post(url,params,{emulateJSON:true}).then((res)=>
                 {
                     console.log(res)
@@ -182,6 +182,10 @@
 </script>
 
 <style type="text/css" scoped>
+	@font-face{
+		font-family: fzlthtFont;
+    	src: url('../assets/style/FZLTHJW.ttf');
+	}
 	.answerbgview{
 		width: 100%;
 		height: 100%;
@@ -200,6 +204,7 @@
 		width: 70%;
 	}
 	.answerNum{
+		font-family: "fzlthtFont";
 		position: fixed;
 		bottom: calc(75% - 6.5vw);
 		left: 14vw;
@@ -214,6 +219,10 @@
 		background-size:100% 100%;
 		color: white;
 		font-size: 1.2em;
+		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		*filter: Glow(color=#000, strength=1);
 	}
 	.ansbottomBg{
 		width: 100%;
@@ -224,6 +233,7 @@
 		bottom: 0px;
 	}
 	.anstextClass{
+		font-family: "fzlthtFont";
 		margin-left: 13%;
 		margin-top: 8%;
 		margin-bottom: 6%;
@@ -234,6 +244,7 @@
 		font-size: 1rem;
 	}
 	.answerbtnClass0{
+		font-family: "fzlthtFont";
 		margin-left: 13%;
 		width: 74%;
 		height: 8vh;
@@ -248,8 +259,10 @@
 		margin-bottom: 10px;
 		border-radius: 10px;
 		font-size: 14px;
+		
 	}
 	.answerbtnClass1{
+		font-family: "fzlthtFont";
 		margin-left: 13%;
 		width: 74%;
 		height: 8vh;
@@ -266,6 +279,7 @@
 		font-size: 14px;
 	}
 	.answerbtnClass2{
+		font-family: "fzlthtFont";
 		margin-left: 13%;
 		width: 74%;
 		height: 8vh;
@@ -282,6 +296,7 @@
 		font-size: 14px;
 	}
 	.selectbtnClass{
+		font-family: "fzlthtFont";
 		margin-left: 13%;
 		width: 74%;
 		height: 8vh;
@@ -294,6 +309,10 @@
 		margin-bottom: 10px;
 		border-radius: 10px;
 		font-size: 14px;
+		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		*filter: Glow(color=#000, strength=1);
 	}
 	.answerbtnbgClass{
 		position: fixed;
@@ -302,7 +321,7 @@
 		height: 21%;
 	}
 	.startbtnClass{
-		/*font-family: '兰亭中黑';*/
+		font-family: "fzlthtFont";
 		position: fixed;
 		margin-left: 20%;
 		width: 60%;
@@ -317,6 +336,10 @@
 		color: white;
 		border: none;
 		background-color: transparent;
+		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		*filter: Glow(color=#000, strength=1);
 	}
 	.alertimagesbg{
 		/*background-color: lightgray;*/
@@ -347,6 +370,7 @@
 		/*background-color: rebeccapurple;*/
 	}
 	.backsmallBtns{
+		font-family: "fzlthtFont";
 		width: 26vw;
 		height: 46px;
 		background-color: transparent;
@@ -357,9 +381,14 @@
 		text-align: center;
 		color: white;
 		margin-right: 20px;
+		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		*filter: Glow(color=#000, strength=1);
 	}
 
 	.nextsmallBtns{
+		font-family: "fzlthtFont";
 		width: 26vw;
 		height: 46px;
 		background-color: transparent;
@@ -369,6 +398,10 @@
 		border: none;
 		text-align: center;
 		color: white;
+		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		*filter: Glow(color=#000, strength=1);
 	}
 	.alertcovers{
 		position: absolute;

@@ -14,12 +14,14 @@ import encrypt from '@/js/encrypt.js'
 import wx from 'weixin-js-sdk'
 
 
+
+
 Vue.config.productionTip = false
 Vue.use(Button)
 Vue.use(Select)
 Vue.use(Progress)
 
-
+localStorage.setItem('project_id','eg4wh0s4ki2')
 //启动图的显示隐藏
 emb.changeCallback = (progress)=>{
   store.state.loadingProgress = progress;
@@ -72,7 +74,9 @@ router.beforeEach((to, from, next) => {
       next();
     }
   }else{
-    next();
+    alert("请在微信打开");
+    return false;
+    // next();
   }
 
   
@@ -109,7 +113,7 @@ bus.$emit('toolbarisshow',true);
 
 
 function getUserInfoWithCode(code){
-  let url = store.state.baseUrl + 'author/getUserInfoIdByCode';
+  let url = store.state.baseUrl + 'author2/getUserInfoIdByCode';
     let params = {'code':code};
     this.$http.post(url,params,{emulateJSON:true}).then((res)=>
     {
@@ -131,7 +135,7 @@ function getUserInfoWithCode(code){
 }
 
 function AuthorUrl(){
-  let url = store.state.baseUrl + 'author/getAuthorUrl';
+  let url = store.state.baseUrl + 'author2/getAuthorUrl';
   let params = {'project_id':localStorage.getItem('project_id')};
   this.$http.post(url,params,{emulateJSON:true}).then((res)=>
   {

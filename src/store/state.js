@@ -1,5 +1,5 @@
 const state = {
-    baseUrl:'http://kobelco.xycoder.com/',
+    baseUrl:'https://www.xycoder.com/',
     // baseUrl:'http://2t55n00887.zicp.vip/',
 	user:{
 		'user_id':null,
@@ -44,7 +44,7 @@ const state = {
 
 	//分享相关
 	projectShareTitle:null,
-	projectShareIcon:null,
+	projectShareIcon:'https://',
 	projectShareDetail:null,
 	projectShareLinkurl:null,
 

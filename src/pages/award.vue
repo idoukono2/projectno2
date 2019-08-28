@@ -8,9 +8,9 @@
 		</div>
 		<img class="middleImage" src="https://resources.xycoder.com/kobelco/images/victory.png"/>
 		<img class="awardBottomImage" src="https://resources.xycoder.com/kobelco/images/result.png"/>
-		<button class="awardbtnClass" @click="alertShow">领奖</button>
+		<button class="awardbtnClass" @click="alertShow">领 奖</button>
 
-		<div style="overflow: auto;margin-left: 10%;width: 80%;color: white;height: 40px;line-height: 20px;font-size: 13px;position: fixed;bottom: 15px;">
+		<div style="font-family: 'fzlthtFont';overflow: auto;margin-left: 10%;width: 80%;color: white;height: 40px;line-height: 20px;font-size: 13px;position: fixed;bottom: 15px;">
 			<img style="float: left;width: 16px;height: 16px;margin-top: 2px;" src="https://resources.xycoder.com/kobelco/images/remind.png">
 			&nbsp;兑奖按钮需要由工作人员当面操作，用户个人操作无效
 		</div>
@@ -47,7 +47,7 @@
 			getaward(){
 				let url = store.state.baseUrl + 'problem/getAward'
 				console.log(url)
-				let params = {'userId':'1','isFirst':'0'};
+				let params = {'userId':localStorage.getItem('user_id'),'isFirst':'0'};
 				this.$http.post(url,params,{emulateJSON:true}).then((res)=>
 				{
 					console.log(res)
@@ -78,6 +78,10 @@
 </script>
 
 <style type="text/css" scoped>
+	@font-face{
+			font-family: fzlthtFont;
+			src: url('../assets/style/FZLTHJW.ttf');
+		}
 	.abgview{
 		width: 100%;
 		height: 100%;
@@ -104,6 +108,7 @@
 	}
 
 	.awardbtnClass{
+		font-family: "fzlthtFont";
 		position: fixed;
 		margin-left: 20%;
 		width: 60%;
@@ -118,6 +123,10 @@
 		color: white;
 		border: none;
 		background-color: transparent;
+		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		-moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+		*filter: Glow(color=#000, strength=1);
 	}
 	.awardBottomImage{
 		position: fixed;

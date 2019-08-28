@@ -176,7 +176,7 @@
 				if (encrypt.platform() == 'wechat') {
 					// alert(encodeURIComponent(window.location.href.split('#')[0]));
 				//获取分享信息
-			        let url = store.state.baseUrl + 'author/getSignInfo';
+			        let url = store.state.baseUrl + 'author2/getSignInfo';
 			        let params ={
 			        	'user_id':localStorage.getItem('user_id'),
 			        	'project_id':localStorage.getItem('project_id'),
