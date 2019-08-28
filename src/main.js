@@ -22,6 +22,7 @@ Vue.use(Select)
 Vue.use(Progress)
 
 localStorage.setItem('project_id','eg4wh0s4ki2')
+localStorage.setItem('user_id','1')
 //启动图的显示隐藏
 emb.changeCallback = (progress)=>{
   store.state.loadingProgress = progress;
@@ -74,9 +75,9 @@ router.beforeEach((to, from, next) => {
       next();
     }
   }else{
-    alert("请在微信打开");
-    return false;
-    // next();
+    // alert("请在微信打开");
+    // return false;
+    next();
   }
 
   
