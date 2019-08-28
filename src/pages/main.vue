@@ -36,6 +36,11 @@
 			}
 		},
 		mounted(){
+            document.body.addEventListener('touchmove', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+            }, { passive: false });
+
 			var _self = this;
             console.log("到首页")
             this.isfirst = this.getisFirstlaunch() ? 1 : 0
