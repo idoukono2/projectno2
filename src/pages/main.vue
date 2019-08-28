@@ -7,8 +7,10 @@
 			<img class="mainTitileDiv" src="https://resources.xycoder.com/kobelco/images/title.png"/>
 		</div>
 		<img class="mainsmallPeople" src="https://resources.xycoder.com/kobelco/images/img1.png"/>
+
 		<div class="mainbottomBg">
 			<p class="maintextClass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 针对参观神钢展位的嘉宾，我们希望他们能够参观完神钢所有的重要区域，包括：SK210D多功能解体机，SK210D汽车解体机，SK350DLC抓钢机和室内共4个区域。同时，鼓励客户了解神钢的产品和技术。</p>
+
 			<div class="btnbgClass">
 				<button class="startbtnClass" @click="startAnswer">开始答题</button>
 				<!--<button :class="{'awrrdbtnClassFirst':!canaward,'awrrdbtnClass': canaward}" @click="getAward">兑奖</button>-->
@@ -143,9 +145,9 @@
 	}
 	.mainsmallPeople{
 		position: fixed;
-		bottom: 21%;
+		bottom: 20%;
 		right: 11vw;
-		width: 36vw;
+		width: calc(14vw + 11.5vh);
 		z-index: 5;
 	}
 	.mainbottomBg{

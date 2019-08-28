@@ -158,7 +158,8 @@
 				this.answerResultstate = false
 
 				if (this.answerResult == false){
-					return
+                    this.getquestiondata(1)
+                    return
 				}
 				if (this.dataModel.problem_id == '4'){
 					this.$router.push({path:"/award"});
