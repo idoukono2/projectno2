@@ -4,7 +4,7 @@
 			<img class="mainlogologoDiv" src="https://resources.xycoder.com/kobelco/images/logo.png"/>
 		</div>
 		<div>
-			<img class="mainTitileDiv" src="https://resources.xycoder.com/kobelco/images/title.png"/>
+			<img class="mainTitileDiv" src="https://resources.xycoder.com/kobelco/images/title_g3.png"/>
 		</div>
 		<img class="mainsmallPeople" src="https://resources.xycoder.com/kobelco/images/img1.png"/>
 

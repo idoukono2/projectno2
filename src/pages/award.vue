@@ -4,7 +4,7 @@
             <img class="awardlogologoDiv" src="https://resources.xycoder.com/kobelco/images/logo.png"/>
         </div>
         <div>
-            <img class="awardTitileDiv" src="https://resources.xycoder.com/kobelco/images/title.png"/>
+            <img class="awardTitileDiv" src="https://resources.xycoder.com/kobelco/images/title_g3.png"/>
         </div>
         <img class="middleImage" src="https://resources.xycoder.com/kobelco/images/victory.png"/>
         <img class="awardBottomImage" src="https://resources.xycoder.com/kobelco/images/result.png"/>

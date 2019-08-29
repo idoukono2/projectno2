@@ -5,7 +5,7 @@
 				<img class="answerlogologoDiv" src="https://resources.xycoder.com/kobelco/images/logo.png"/>
 			</div>
 			<div>
-				<img class="answerTitileDiv" src="https://resources.xycoder.com/kobelco/images/title.png"/>
+				<img class="answerTitileDiv" src="https://resources.xycoder.com/kobelco/images/title_g3.png"/>
 			</div>
 
 			<div class="answerNum">{{ dataModel.problem_id }}</div>
@@ -28,7 +28,7 @@
 			<div class="alertimagesbg">
 				<img class="alertimages" :src = "itemImage">
 				<div class="smallBtnBgview">
-				<div class="backsmallBtns" @click="backtoMian">返回</div>
+				<div class="backsmallBtns" @click="backtoMian">重新答题</div>
 				<div class="nextsmallBtns" @click="nextStep">下一步</div>
 				</div>
 			</div>
@@ -48,7 +48,7 @@
                 answerResultstate:false,
 				answerResult:true,
 				dataModel:{},
-                answerArray:[],
+                answerArray:[{'answer_content':' '},{'answer_content':' '},{'answer_content':' '}],
 				selectStatus0:false,
 				selectStatus1:false,
 				selectStatus2:false,
@@ -122,7 +122,7 @@
 					} else {
 						this.answerResultstate = true
 						this.answerResult = false
-						this.itemImage = 'https://resources.xycoder.com/kobelco/images/fail_g2.png'
+						this.itemImage = 'https://resources.xycoder.com/kobelco/images/fail_g3.png'
 						console.log("答错")
 					}
 					this.selectStatus0 = false
@@ -155,7 +155,10 @@
                 });
             },
 			backtoMian(){
-				this.$router.push({path:"/main"});
+				// this.$router.push({path:"/main"});
+				this.answerResultstate = false
+				this.getquestiondata(1)
+                // return
 			},
 			nextStep(){
 				console.log("下一步")
