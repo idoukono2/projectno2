@@ -32,7 +32,8 @@
 			return{
 			    isfirst:true,
 				cananswer:true,
-				canaward:false
+				canaward:false,
+				had_award:''
 			}
 		},
 		mounted(){
@@ -59,12 +60,16 @@
 				if (ths.cananswer == true){
 					ths.$router.push({path:"/answer"});
 				} else {
-					alert('您已经领取过三次奖品，无法通过答题获取更多奖品')
+					alert('您已经参加过活动，机会已用完')
 				}
 			},
 			getAward(){
 				if (this.canaward == false){
-					alert('您必须一次性答对四道题才能够领取精品！')
+					if (this.had_award == true){
+						alert('您已经领取过奖品，每人限领取一次！')
+					} else {
+						alert('您还未答题，答题成功即可兑奖！')
+					}
 					return
 				}
 				this.$router.push({path:'/award'})
@@ -82,6 +87,7 @@
 					if (res.body.success == true){
 						this.cananswer = res.body.data.can_answer
 						this.canaward = res.body.data.can_award
+						this.had_award = res.body.data.had_award
 						console.log("看赋值")
 						console.log(this.cananswer)
 						console.log(this.canaward)

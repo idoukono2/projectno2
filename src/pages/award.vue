@@ -56,7 +56,6 @@
                     console.log(res)
                     if (res.body.success == true) {
                         console.log("领奖成功")
-                        this.$router.push({path: "/main"});
                     } else {
                         alert(res.body.message)
                     }
@@ -66,11 +65,7 @@
             },
             alertShow() {
                 alert('兑奖按钮需要由工作人员当面操作，用户个人操作无效,每位用户只能兑奖一次哦！')
-                // var a=confirm("兑奖按钮需要由工作人员当面操作，用户个人操作无效,每位用户只能兑奖一次哦！");
-                // if(a){
-                // 	console.log("继续下一题");
-                // 	// this.getaward()
-                // }
+                this.getaward()
 
             }
         }

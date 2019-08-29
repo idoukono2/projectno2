@@ -27,10 +27,12 @@
 		<div class="alertcovers" v-if="answerResultstate">
 			<div class="alertimagesbg">
 				<img class="alertimages" :src = "itemImage">
-				<div class="smallBtnBgview">
-				<div class="backsmallBtns" @click="backtoMian">重新答题</div>
-				<div class="nextsmallBtns" @click="nextStep">下一步</div>
-				</div>
+				<!--<div class="smallBtnBgview">-->
+				<div v-if="answerResult" class="nextsmallBtns" @click="nextStep">下一步</div>
+				<div v-else class="backsmallBtns" @click="backtoMian">重新答题</div>
+
+				<!--<div class="nextsmallBtns" @click="nextStep">下一步</div>-->
+				<!--</div>-->
 			</div>
 		</div>
 	</div>
@@ -63,6 +65,7 @@
                 e.preventDefault();
                 e.stopPropagation();
             }, { passive: false });
+
             console.log("到答题页")
             store.state.isFirstlaunch = false
             console.log("是否首次")
@@ -242,10 +245,10 @@
 	}
 	.anstextClass{
 		font-family: "fzlthtFont";
-		margin-left: 13%;
+		margin-left: 11%;
 		margin-top: 8%;
 		margin-bottom: 6%;
-		width: 74%;
+		width: 78%;
 		line-height: 6vh;
 		font-size: 0.9rem;
 		text-align: center;
@@ -372,17 +375,19 @@
 	.smallBtnBgview{
 		display: flex;
 		position: absolute;
-		/*top: 50%;*/
-		bottom: 20px;
+		bottom: calc(2vw + 2vh);
 		left: 22%;
-		/*background-color: rebeccapurple;*/
+		background-color: rebeccapurple;
 	}
 	.backsmallBtns{
+		position: absolute;
+		bottom: calc(2vw + 2vh);
+		left: 30%;
 		font-family: "fzlthtFont";
-		width: 26vw;
-		height: 46px;
+		width: 40%;
+		height: calc(2.5vw + 5.5vh);
 		background-color: transparent;
-		line-height: 46px;
+		line-height: calc(2.5vw + 5.5vh);
 		background-image: url("https://resources.xycoder.com/kobelco/images/button1_small.png");
 		background-size:100% 100%;
 		border: none;
@@ -396,20 +401,24 @@
 	}
 
 	.nextsmallBtns{
+		position: absolute;
+		bottom: calc(2vw + 2vh);
+		left: 30%;
 		font-family: "fzlthtFont";
-		width: 26vw;
-		height: 46px;
+		width: 40%;
+		height: calc(2.5vw + 5.5vh);
 		background-color: transparent;
-		line-height: 46px;
-		background-image: url("https://resources.xycoder.com/kobelco/images/button2_small.png");
+		line-height: calc(2.5vw + 5.5vh);
 		background-size:100% 100%;
 		border: none;
 		text-align: center;
 		color: white;
+		margin-right: 20px;
 		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
 		-webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
 		-moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
 		*filter: Glow(color=#000, strength=1);
+		background-image: url("https://resources.xycoder.com/kobelco/images/button2_small.png");
 	}
 	.alertcovers{
 		position: absolute;
