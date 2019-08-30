@@ -1,5 +1,6 @@
 <template>
 	<div class="bgview">
+		<!-- <delaybtn :title="test1" :bgimage="test"></delaybtn> -->
 		<div>
 			<img class="mainlogologoDiv" src="https://resources.xycoder.com/kobelco/images/logo.png"/>
 		</div>
@@ -23,9 +24,21 @@
 <script type="text/javascript">
 	import Vue from "vue";
 	import toolitem from '@/components/Tool-item';
+	import delaybtn from '@/components/DelayBtn'
 	import store from '@/store/index.js';
 	import encrypt from '@/js/encrypt.js';
 	Vue.component("toolitem",toolitem);
+	Vue.component("delaybtn",delaybtn);
+	(function(){
+		window.alert = function(name){
+		var iframe = document.createElement("IFRAME");
+		iframe.style.display="none";
+		iframe.setAttribute("src", 'data:text/plain');
+		document.documentElement.appendChild(iframe);
+		window.frames[0].window.alert(name);
+		iframe.parentNode.removeChild(iframe);
+		}
+		})();
 	export default{
 		name:"toolBar",
 		data(){
@@ -33,7 +46,9 @@
 			    isfirst:true,
 				cananswer:true,
 				canaward:false,
-				had_award:''
+				had_award:'',
+				test1:'test',
+				test:'https://resources.xycoder.com/kobelco/images/button1.png'
 			}
 		},
 		mounted(){
@@ -48,7 +63,6 @@
             console.log("是否首次")
             console.log(this.isfirst)
 			this.getdata()
-			_self.getSignInfo();
     	},
 		computed:{
 
@@ -61,15 +75,18 @@
 					ths.$router.push({path:"/answer"});
 				} else {
 					alert('您已经参加过活动，机会已用完')
+
 				}
 			},
 			getAward(){
+				// localStorage.removeItem('user_id');
 				if (this.canaward == false){
 					if (this.had_award == true){
 						alert('您已经领取过奖品，每人限领取一次！')
 					} else {
 						alert('您还未答题，答题成功即可兑奖！')
 					}
+
 					return
 				}
 				this.$router.push({path:'/award'})
@@ -91,6 +108,9 @@
 						console.log("看赋值")
 						console.log(this.cananswer)
 						console.log(this.canaward)
+
+						// this.$options.methods.getSignInfo.bind(this)();
+						this.getSignInfo();
 					}
 				},(err)=>
                 {
@@ -108,12 +128,12 @@
 			        	'url':encodeURIComponent(window.location.href.split('#')[0]),
 			        	// 'project_id':localStorage.getItem('project_id'),
 			    	}
-
+					console.log(params)
 			    	this.$http.post(url,params,{emulateJSON:true}).then((res)=>
 		    		{	
 		    			var realdata = res.data;
 		    			if (realdata.success) {
-		    				// alert(realdata.data.url);
+		    				console.log(realdata.data);
 		    				encrypt.shareSdk(realdata.data.appId,realdata.data.timestamp,realdata.data.nonceStr,realdata.data.signature,realdata.data.url);
 		    			}else{
 		    				// alert("获取分享信息接口失败:" + realdata.message);
@@ -171,7 +191,7 @@
 		bottom: 0px;
 	}
 	.maintextClass{
-		font-family: 'fzlthtFont';
+		font-family: 'fzlthtFont','Source Han Sans CN','SimHei';
 		margin-left: 15%;
 		width: 70%;
 		line-height: 32px;
@@ -184,7 +204,7 @@
 		height: 21%;
 	}
 	.startbtnClass{
-		font-family: 'fzlthtFont';
+		font-family: 'fzlthtFont','Source Han Sans CN','SimHei';
 		position: fixed;
 		margin-left: 20%;
 		width: 60%;
@@ -205,7 +225,7 @@
 		*filter: Glow(color=#000, strength=1);
 	}
 	.awrrdbtnClass{
-		font-family: 'fzlthtFont';
+		font-family: 'fzlthtFont','Source Han Sans CN','SimHei';
 		position: fixed;
 		margin-left: 20%;
 		width: 60%;

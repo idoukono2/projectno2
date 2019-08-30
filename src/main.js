@@ -22,7 +22,7 @@ Vue.use(Select)
 Vue.use(Progress)
 
 localStorage.setItem('project_id','eg4wh0s4ki2')
-localStorage.setItem('user_id','204')
+// localStorage.setItem('user_id','204')
 //启动图的显示隐藏
 emb.changeCallback = (progress)=>{
   store.state.loadingProgress = progress;

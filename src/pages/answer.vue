@@ -24,11 +24,13 @@
 		<!--<XYAlertView :item ="item1" v-if="answerResultstate"></XYAlertView>-->
 		<!--<XYAlertView :item ="item" v-else></XYAlertView>-->
 
+
+
 		<div class="alertcovers" v-if="answerResultstate">
 			<div class="alertimagesbg">
 				<img class="alertimages" :src = "itemImage">
 				<!--<div class="smallBtnBgview">-->
-				<div v-if="answerResult" class="nextsmallBtns" @click="nextStep">下一步</div>
+				<div v-if="answerResult" class="nextsmallBtns" @click="nextStep">{{nextStepTitle}}</div>
 				<div v-else class="backsmallBtns" @click="backtoMian">重新答题</div>
 
 				<!--<div class="nextsmallBtns" @click="nextStep">下一步</div>-->
@@ -57,7 +59,8 @@
 				questionId:'',
                 answerId:'',
                 comeontimestamp:'',
-                itemImage:'https://resources.xycoder.com/kobelco/images/success.png',
+				itemImage:'https://resources.xycoder.com/kobelco/images/success.png',
+				nextStepTitle:'下一题'
             }
 		},
         mounted(){
@@ -78,7 +81,18 @@
         },
 		computed:{
 		},
-
+		watch:{
+			dataModel:{
+				immediate:true,
+				handler:function(e){
+					if (e.problem_id == 4){
+						this.nextStepTitle = '去领奖'
+					}else{
+						this.nextStepTitle = '下一题'
+					}
+				}
+			}
+		},
 		methods:{
             chooseAnswer(index){
                 console.log(index)

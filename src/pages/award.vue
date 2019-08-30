@@ -10,7 +10,7 @@
         <img class="awardBottomImage" src="https://resources.xycoder.com/kobelco/images/result.png"/>
         <button class="awardbtnClass" @click="alertShow">领 奖</button>
 
-        <div style="font-family: 'fzlthtFont';overflow: auto;margin-left: 10%;width: 80%;color: white;height: 40px;line-height: 20px;font-size: 13px;position: fixed;bottom: 15px;">
+        <div style="font-family: 'fzlthtFont','Source Han Sans CN','SimHei';overflow: auto;margin-left: 10%;width: 80%;color: white;height: 40px;line-height: 20px;font-size: 13px;position: fixed;bottom: 15px;">
             <img style="float: left;width: 16px;height: 16px;margin-top: 2px;"
                  src="https://resources.xycoder.com/kobelco/images/remind.png">
             &nbsp;兑奖按钮需要由工作人员当面操作，用户个人操作无效
@@ -25,6 +25,16 @@
     import store from '@/store/index.js';
 
     Vue.component("toolitem", toolitem);
+    (function(){
+		window.alert = function(name){
+		var iframe = document.createElement("IFRAME");
+		iframe.style.display="none";
+		iframe.setAttribute("src", 'data:text/plain');
+		document.documentElement.appendChild(iframe);
+		window.frames[0].window.alert(name);
+		iframe.parentNode.removeChild(iframe);
+		}
+		})();
     export default {
         name: "toolBar",
         data() {
@@ -64,7 +74,7 @@
                 });
             },
             alertShow() {
-                alert('兑奖按钮需要由工作人员当面操作，用户个人操作无效,每位用户只能兑奖一次哦！')
+                alert('兑奖按钮需要由工作人员当面操作，用户个人操作无效,\n每位用户只能兑奖一次哦！')
                 this.getaward()
 
             }
