@@ -215,7 +215,7 @@
 		font-family: 'fzlthtFont','Source Han Sans CN','SimHei';
 		position: fixed;
 		margin-left: 20%;
-		top:10px;
+		margin-top: 15px;
 		width: 60%;
 		height: 7vh;
 		line-height: 7vh;
@@ -239,13 +239,13 @@
 		margin-left: 20%;
 		width: 60%;
 		height: 7vh;
-		top:30px;
 		line-height: 7vh;
 		bottom: calc((21% - 14vh) / 3);
 		background-image: url("https://resources.xycoder.com/kobelco/images/button2.png");
 		background-size:100% 100%;
 		text-align: center;
 		border-radius: 10px;
+		/* margin-bottom: 10px; */
 		font-size: 15px;
 		color: white;
 		border: none;
