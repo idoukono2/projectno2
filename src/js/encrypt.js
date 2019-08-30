@@ -1,6 +1,7 @@
 import wx from 'weixin-js-sdk';
 import store from '@/store/index.js'
 
+
 export default{
 	getQueryString:function(name) {
 	  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
@@ -29,6 +30,8 @@ export default{
   hiddenButton:function(){
     wx.hideAllNonBaseMenuItem();
   },
+
+
 	shareSdk:function(appId,timestamp,nonceStr,signature,url){
 		    wx.config({
           debug: false,

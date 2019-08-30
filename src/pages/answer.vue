@@ -30,8 +30,8 @@
 			<div class="alertimagesbg">
 				<img class="alertimages" :src = "itemImage">
 				<!--<div class="smallBtnBgview">-->
-				<div v-if="answerResult" class="nextsmallBtns" @click="nextStep">{{nextStepTitle}}</div>
-				<div v-else class="backsmallBtns" @click="backtoMian">重新答题</div>
+				<button v-if="answerResult" class="nextsmallBtns" @click="nextStep">{{nextStepTitle}}</button>
+				<button v-else class="backsmallBtns" @click="backtoMian">重新答题</button>
 
 				<!--<div class="nextsmallBtns" @click="nextStep">下一步</div>-->
 				<!--</div>-->
@@ -361,6 +361,8 @@
 		color: white;
 		border: none;
 		background-color: transparent;
+		top: 50%; /*偏移*/
+        transform: translateY(-50%);
 		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
 		-webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
 		-moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
@@ -381,7 +383,7 @@
 		margin: auto;
 		padding: 0px;
 		position: relative;
-		width: 100%;
+		width: 93%;
 		top:25%;
 		transform:translate(0%,0%);
 		text-align: center;

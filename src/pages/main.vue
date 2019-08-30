@@ -5,7 +5,7 @@
 		</div> -->
 		
 		<div>
-			<img class="mainlogologoDiv" src="https://resources.xycoder.com/kobelco/images/logo.png"/>
+			<img class="mainlogologoDiv" src="@/assets/images/logo.png"/>
 		</div>
 		<div>
 			<img class="mainTitileDiv" src="https://resources.xycoder.com/kobelco/images/title_g3.png"/>
@@ -36,6 +36,7 @@
 		window.alert = function(name){
 		var iframe = document.createElement("IFRAME");
 		iframe.style.display="none";
+		// iframe.style.text = 'test';
 		iframe.setAttribute("src", 'data:text/plain');
 		document.documentElement.appendChild(iframe);
 		window.frames[0].window.alert(name);
@@ -214,6 +215,7 @@
 		font-family: 'fzlthtFont','Source Han Sans CN','SimHei';
 		position: fixed;
 		margin-left: 20%;
+		top:10px;
 		width: 60%;
 		height: 7vh;
 		line-height: 7vh;
@@ -237,6 +239,7 @@
 		margin-left: 20%;
 		width: 60%;
 		height: 7vh;
+		top:30px;
 		line-height: 7vh;
 		bottom: calc((21% - 14vh) / 3);
 		background-image: url("https://resources.xycoder.com/kobelco/images/button2.png");
