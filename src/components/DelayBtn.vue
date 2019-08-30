@@ -19,15 +19,15 @@
                },
                width:{
                    type:String,
-                   default:'200px'
+//                    default:'200px'
                },
                height:{
                    type:String,
-                   default:'44px'
+//                    default:'44px'
                },
                fontSize:{
                    type:String,
-                   default:'16px'
+//                    default:'16px'
                },
                boxShadow:{
                    type:String,
@@ -62,10 +62,10 @@
     content: " ";
     opacity: 0;
     position:absolute;
-    top:0px;
-    bottom: 0px;
-    left:0px;
-    right:20px;
+    top:5px;
+    bottom: -5px;
+    left:5px;
+    right:-5px;
 }
   .rytBtn:active::after{
     opacity: 0.5;
