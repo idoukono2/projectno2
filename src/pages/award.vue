@@ -8,7 +8,7 @@
         </div>
         <img class="middleImage" src="https://resources.xycoder.com/kobelco/images/victory.png"/>
         <img class="awardBottomImage" src="https://resources.xycoder.com/kobelco/images/result.png"/>
-        <button class="awardbtnClass" @click="alertShow">领 奖</button>
+        <shadowButton class="awardbtnClass" @click="alertShow">领 奖</shadowButton>
 
         <div style="font-family: 'fzlthtFont','Source Han Sans CN','SimHei';overflow: auto;margin-left: 10%;width: 80%;color: white;height: 40px;line-height: 20px;font-size: 13px;position: fixed;bottom: 15px;">
             <img style="float: left;width: 16px;height: 16px;margin-top: 2px;"

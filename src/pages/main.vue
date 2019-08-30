@@ -1,6 +1,9 @@
 <template>
 	<div class="bgview">
-		<!-- <delaybtn :title="test1" :bgimage="test"></delaybtn> -->
+		<!-- <div>
+			<shadowButton class="delaybtn"></shadowButton>
+		</div> -->
+		
 		<div>
 			<img class="mainlogologoDiv" src="https://resources.xycoder.com/kobelco/images/logo.png"/>
 		</div>
@@ -13,9 +16,9 @@
 			<p class="maintextClass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 针对参观神钢展位的嘉宾，我们希望他们能够参观完神钢所有的重要区域，包括：SK210D多功能解体机，SK210D汽车解体机，SK350DLC抓钢机和室内共4个区域。同时，鼓励客户了解神钢的产品和技术。</p>
 
 			<div class="btnbgClass">
-				<button class="startbtnClass" @click="startAnswer">开始答题</button>
+				<shadowButton class="startbtnClass" @click="startAnswer">开始答题</shadowButton>
 				<!--<button :class="{'awrrdbtnClassFirst':!canaward,'awrrdbtnClass': canaward}" @click="getAward">兑奖</button>-->
-				<button class="awrrdbtnClass" @click="getAward">兑奖</button>
+				<shadowButton class="awrrdbtnClass" @click="getAward">兑奖</shadowButton>
 			</div>
 		</div>
 	</div>
@@ -24,11 +27,11 @@
 <script type="text/javascript">
 	import Vue from "vue";
 	import toolitem from '@/components/Tool-item';
-	import delaybtn from '@/components/DelayBtn'
+	import shadowButton from '@/components/DelayBtn'
 	import store from '@/store/index.js';
 	import encrypt from '@/js/encrypt.js';
 	Vue.component("toolitem",toolitem);
-	Vue.component("delaybtn",delaybtn);
+	Vue.component("shadowButton",shadowButton);
 	(function(){
 		window.alert = function(name){
 		var iframe = document.createElement("IFRAME");
@@ -156,6 +159,10 @@
 	@font-face{
 		font-family: fzlthtFont;
     	src: url('../assets/style/FZLTHJW.ttf');
+	}
+	.delaybtn{
+		height: 40px;
+		background-color: red;
 	}
 	.bgview{
 		width: 100%;

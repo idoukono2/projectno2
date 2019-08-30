@@ -12,7 +12,11 @@
 
 
 <script>
+  import Vue from "vue";
   import store from '@/store/index.js';
+  import shadowButton from '@/components/DelayBtn'
+  
+	Vue.component("shadowButton",shadowButton);
   export default {
     name: 'App',
     data(){

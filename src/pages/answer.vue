@@ -17,7 +17,7 @@
 
 
 				<div class="answerbtnbgClass">
-					<button class="startbtnClass" @click="submitAnswer">提交</button>
+					<shadowButton class="startbtnClass" @click="submitAnswer">提交</shadowButton>
 				</div>
 			</div>
 		</div>
