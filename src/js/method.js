@@ -1,3 +1,4 @@
+import wx from 'weixin-js-sdk';
 function detailResponse(data) {
 	// body...
 	var realdata = data.data;
@@ -23,7 +24,12 @@ function getQueryString(name) {
 }
 function onBridgeReady() {
 	WeixinJSBridge.call('hideOptionMenu');
+
+	wx.hideMenuItems({
+		menuList: ["menuItem:share:timeline", "menuItem:copyUrl", "menuItem:share:appMessage", "menuItem:share:qq", "menuItem:share:weiboApp", "menuItem:favorite", "menuItem:share:facebook", "menuItem:share:QZone", "menuItem:editTag", "menuItem:delete", "menuItem:copyUrl", "menuItem:originPage", "menuItem:readMode", "menuItem:openWithQQBrowser", "menuItem:openWithSafari", "menuItem:share:email", "menuItem:share:brand"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮
+	});
 }
+
 
 if (typeof WeixinJSBridge == "undefined") {
 	if (document.addEventListener) {

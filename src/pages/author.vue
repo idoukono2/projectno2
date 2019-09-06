@@ -63,7 +63,8 @@
 				  let params = {'project_id':localStorage.getItem('project_id')};
 				  this.$http.post(url,params,{emulateJSON:true}).then((res)=>
 				  {
-				    var realdata = res.data;
+				    var realdata = res.data;  
+					
 				    if (!realdata.success) {
 				      alert('获取url失败:'+realdata.message);
 				    }else{

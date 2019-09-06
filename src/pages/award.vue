@@ -1,7 +1,7 @@
 <template>
     <div class="abgview">
         <div>
-            <img class="awardlogologoDiv" src="https://resources.xycoder.com/kobelco/images/logo.png"/>
+            <img class="awardlogologoDiv" src="@/assets/images/logo.png"/>
         </div>
         <div>
             <img class="awardTitileDiv" src="https://resources.xycoder.com/kobelco/images/title_g3.png"/>
@@ -13,18 +13,27 @@
         <div style="font-family: 'fzlthtFont','Source Han Sans CN','SimHei';overflow: auto;margin-left: 10%;width: 80%;color: white;height: 40px;line-height: 20px;font-size: 13px;position: fixed;bottom: 15px;">
             <img style="float: left;width: 16px;height: 16px;margin-top: 2px;"
                  src="https://resources.xycoder.com/kobelco/images/remind.png">
-            &nbsp;兑奖按钮需要由工作人员当面操作，用户个人操作无效
+            &nbsp;请凭借此页面到接待台领取奖品，兑奖按钮需要由工作人员当面操作，用户个人操作无效。
         </div>
 
     </div>
 </template>
 
 <script type="text/javascript">
+    import wx from 'weixin-js-sdk';
     import Vue from "vue";
     import toolitem from '@/components/Tool-item';
     import store from '@/store/index.js';
 
+
     Vue.component("toolitem", toolitem);
+wx.ready(function() {
+                    wx.hideOptionMenu();
+                })
+
+	wx.hideMenuItems({
+		menuList: ["menuItem:share:timeline", "menuItem:copyUrl", "menuItem:share:appMessage", "menuItem:share:qq", "menuItem:share:weiboApp", "menuItem:favorite", "menuItem:share:facebook", "menuItem:share:QZone", "menuItem:editTag", "menuItem:delete", "menuItem:copyUrl", "menuItem:originPage", "menuItem:readMode", "menuItem:openWithQQBrowser", "menuItem:openWithSafari", "menuItem:share:email", "menuItem:share:brand"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮
+	});
     (function(){
 		window.alert = function(name){
 		var iframe = document.createElement("IFRAME");
@@ -41,6 +50,10 @@
             return {}
         },
         mounted() {
+
+            wx.ready(function() {
+                    wx.hideOptionMenu();
+                })
             document.body.addEventListener('touchmove', function(e){
                 e.preventDefault();
                 e.stopPropagation();
@@ -50,7 +63,9 @@
             console.log("是否首次")
             console.log(store.state.isFirstlaunch)
         },
-        computed: {},
+        computed: {
+
+        },
 
         methods: {
             itemClick(success) {
@@ -118,7 +133,7 @@
     }
 
     .awardbtnClass {
-        font-family: "fzlthtFont";
+        font-family: "fzlthtFont",'Source Han Sans CN','SimHei';
         position: fixed;
         margin-left: 20%;
         width: 60%;

@@ -2,7 +2,7 @@
 	<div >
 		<div class="answerbgview">
 			<div>
-				<img class="answerlogologoDiv" src="https://resources.xycoder.com/kobelco/images/logo.png"/>
+				<img class="answerlogologoDiv" src="@/assets/images/logo.png"/>
 			</div>
 			<div>
 				<img class="answerTitileDiv" src="https://resources.xycoder.com/kobelco/images/title_g3.png"/>
@@ -229,7 +229,7 @@
 		width: 70%;
 	}
 	.answerNum{
-		font-family: "fzlthtFont";
+		font-family: 'fzlthtFont','Source Han Sans CN','SimHei';
 		position: fixed;
 		bottom: calc(75% - 6.5vw);
 		left: 14vw;
@@ -346,7 +346,7 @@
 		height: 21%;
 	}
 	.startbtnClass{
-		font-family: "fzlthtFont";
+		font-family: 'fzlthtFont','Source Han Sans CN','SimHei';
 		position: fixed;
 		margin-left: 20%;
 		width: 60%;
@@ -361,8 +361,6 @@
 		color: white;
 		border: none;
 		background-color: transparent;
-		top: 50%; /*偏移*/
-        transform: translateY(-50%);
 		text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
 		-webkit-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
 		-moz-text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
@@ -399,11 +397,12 @@
 		position: absolute;
 		bottom: calc(2vw + 2vh);
 		left: 30%;
-		font-family: "fzlthtFont";
+		font-size: 15px;
+		font-family: "fzlthtFont",'Source Han Sans CN','SimHei';
 		width: 40%;
 		height: calc(2.5vw + 5.5vh);
 		background-color: transparent;
-		line-height: calc(2.5vw + 5.5vh);
+		line-height: calc(3.5vw + 5vh);
 		background-image: url("https://resources.xycoder.com/kobelco/images/button1_small.png");
 		background-size:100% 100%;
 		border: none;
@@ -420,11 +419,12 @@
 		position: absolute;
 		bottom: calc(2vw + 2vh);
 		left: 30%;
-		font-family: "fzlthtFont";
+		font-family: "fzlthtFont",'Source Han Sans CN','SimHei';
 		width: 40%;
+		font-size: 15px;
 		height: calc(2.5vw + 5.5vh);
 		background-color: transparent;
-		line-height: calc(2.5vw + 5.5vh);
+		line-height: calc(3.5vw + 5vh);
 		background-size:100% 100%;
 		border: none;
 		text-align: center;

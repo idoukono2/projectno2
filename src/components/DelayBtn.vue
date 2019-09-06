@@ -52,20 +52,20 @@
 </script>
 <style type="text/css" scoped>
 .rytBtn{
-   position: relative;
+   /* position: relative; */
    /* border-radius:  22px; */
 }
 
 .rytBtn::after{
     background-color: #000;
-    /* border-radius: 22px; */
+    border-radius: 10px;
     content: " ";
     opacity: 0;
     position:absolute;
-    top:5px;
-    bottom: -5px;
-    left:5px;
-    right:-5px;
+    top:4px;
+    bottom: 4px;
+    left:4px;
+    right:4px;
 }
   .rytBtn:active::after{
     opacity: 0.5;

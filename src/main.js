@@ -75,8 +75,8 @@ router.beforeEach((to, from, next) => {
       next();
     }
   }else{
-    // alert("请在微信打开");
-    // return false;
+    alert("请在微信打开");
+    return false;
     next();
   }
 
